@@ -1,0 +1,48 @@
+.testimonial {
+    width: 50%;
+    margin: auto;
+    color: #9CADB9;
+    padding: 2rem;
+}
+.swiper-wrapper-cus{
+    margin: 5rem 0;
+}
+.slide {
+    cursor: pointer;
+    background: #1E1E27;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.clientImage{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.clientImage img{
+    max-width: 115%;
+}
+
+.slide p{
+    margin-top: 2rem;
+    font-size: 15px;
+}
+
+.stars i{
+    font-size: 15px;
+    margin: 0 3px;
+    color: red;
+}

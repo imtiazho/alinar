@@ -1,0 +1,38 @@
+.service-summary {
+    color: #9CADB9;
+    background-color: #1E1E27;
+}
+
+.service-summary-container {
+    height: 200px;
+    width: 90%;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.each-service-summary {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 20px;
+    border-right: 1px solid #565656;
+}
+
+.each-service-summary i {
+    font-size: 33px;
+}
+
+.each-service-summary p {
+    font-size: 15px;
+}
+
+.each-service-summary p small {
+    font-size: 12px;
+}
+
+.each-service-summary:last-child{
+    border-right: none;
+}

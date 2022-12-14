@@ -1,0 +1,11 @@
+.latest-blog{
+    margin-top: 5rem;
+}
+.latest-blog-container{
+    width: 80%;
+    margin: 5rem auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
