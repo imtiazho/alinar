@@ -9,6 +9,9 @@ import ShareeDetails from './Components/Home/Sharee/ShareeDetails';
 import ThreePisDetails from './Components/Home/ThreePis/ThreePisDetails';
 import Abaya from './Components/Home/Abaya/Abaya';
 import AbayaCardDetails from './Components/Home/Abaya/AbayaCardDetails';
+import Login from './Components/Login/Login';
+import SignUp from './Components/SignUp/SignUp';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -23,8 +26,11 @@ function App() {
         <Route path='/shareeDetails/:shareeId' element={<ShareeDetails />}></Route>
         <Route path='/threePisDetails/:threePisDetailsId' element={<ThreePisDetails />}></Route>
         <Route path='/abayaDetails/:abayaDetailsId' element={<AbayaCardDetails />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signup' element={<SignUp />}></Route>
       </Routes>
       <Footer />
+      <Toaster />
     </div>
   );
 }

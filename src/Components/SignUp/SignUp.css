@@ -1,0 +1,12 @@
+.signup-form {
+    height: auto;
+    margin: 0 auto 5rem auto;
+}
+
+.form-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin: 0 2rem 2rem 2rem;
+}

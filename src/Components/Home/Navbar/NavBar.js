@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UpperNav from '../UpperNav/UpperNav';
 import './NavBar.css'
 import { FaBars } from 'react-icons/fa';
 import { ImCross } from 'react-icons/im';
+import logo from '../../../assets/logo.png'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../Firebase/Firebase.init';
+import { signOut } from 'firebase/auth';
+import anonymousUser from '../../../assets/anonymous_user.png'
+import { toast } from 'react-hot-toast';
 
 
 const NavBar = () => {
-    const [navStatus, steNavOpen] = useState(false)
+    const [user, loading, error] = useAuthState(auth);
+    const [navStatus, steNavOpen] = useState(false);
+    const [userSettingOpen, setuserSettingOpen] = useState(false);
+    const navigate = useNavigate()
     const menuItems = (
         <>
             <li><Link to='/'>Home</Link></li>
@@ -16,11 +25,23 @@ const NavBar = () => {
             <li><Link to='/about'>About Us</Link></li>
         </>
     )
+
+    const handleSignOut = () => {
+        signOut(auth)
+        navigate('/login')
+        toast.success('Sign Out successfully!');
+        setuserSettingOpen(false)
+    }
+
+    if (loading) {
+        return <p>Loading...</p>
+    }
+
     return (
         <div className='main-nav'>
             <UpperNav />
             <div className='nav-container'>
-                <Link to='/'><h3>Alinar</h3></Link>
+                <Link to='/'><img src={logo} alt="" /></Link>
 
                 <div className='menu-log-cart'>
                     <ul className='nav-items'>
@@ -28,8 +49,29 @@ const NavBar = () => {
                     </ul>
 
                     <ul className='log-cart'>
-                        <li><Link to='/login'><i className="fa-sharp fa-solid fa-user"></i></Link></li>
-                        <li className='cart'><Link to='/cart'><i className="fa-solid fa-cart-shopping"></i></Link><span className='cart-length'>5</span></li>
+                        <li className='cart-icon'><Link to='/cart'><i className="fa-solid fa-cart-shopping"></i></Link><span className='cart-length'>5</span></li>
+
+                        {user ?
+                            <li className='user-icon'>
+                                {user?.photoURL ?
+                                    <img onClick={() => setuserSettingOpen(!userSettingOpen)} src={user.photoURL} alt="" />
+                                    :
+                                    <img onClick={() => setuserSettingOpen(!userSettingOpen)} src={anonymousUser} alt="" />
+                                }
+
+                                {userSettingOpen &&
+                                    <div className='user-settings'>
+                                        <p><Link>{user.displayName ? user.displayName : "Anonymous User"}</Link></p>
+                                        <p>Dhaka BanglaDesh</p>
+                                        <button onClick={handleSignOut} className='signout-btn'>Sign Out</button>
+                                    </div>
+                                }
+                            </li>
+                            :
+                            <li className='login-icon'>
+                                <Link to='/login'><i className="fa-sharp fa-solid fa-user"></i></Link>
+                            </li>
+                        }
                     </ul>
                 </div>
 

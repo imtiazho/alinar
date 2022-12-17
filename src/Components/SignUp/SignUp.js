@@ -1,29 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Login.css';
-import logo from '../../assets/logo.png'
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import './SignUp.css';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase/Firebase.init';
 import { toast } from 'react-hot-toast';
 
-const Login = () => {
+const SignUp = () => {
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         hookUser,
         hookLoading,
         hookError,
-    ] = useSignInWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
     const navigate = useNavigate();
 
     const [userInfo, setUserInfo] = useState({
+        name: "",
         email: "",
         password: "",
+        confirmPassword: ""
     })
     const [errors, setErrors] = useState({
+        nameError: "",
         emailError: "",
         passwordError: "",
+        confirmPasswordError: ""
     })
+
+    const handleName = (e) => {
+        if (e.target.value !== "") {
+            setUserInfo({ ...userInfo, name: e.target.value });
+            setErrors({ ...errors, nameError: "" })
+        }
+        else {
+            setErrors({ ...errors, nameError: "Name is required." })
+            setUserInfo({ ...userInfo, name: "" });
+        }
+    }
 
     const handleEmail = (e) => {
         const emailRegEx = /\S+@\S+\.\S+/;
@@ -46,54 +60,57 @@ const Login = () => {
             setErrors({ ...errors, passwordError: "" });
         }
         else {
-            setErrors({ ...errors, passwordError: "Password must be in 6 character" });
+            setErrors({ ...errors, passwordError: "Password must be 6 character" });
             setUserInfo({ ...userInfo, password: "" });
         }
 
     }
 
+    const handleConfirmPassword = (e) => {
+        if (userInfo.password === e.target.value) {
+            setUserInfo({ ...userInfo, confirmPassword: e.target.value });
+            setErrors({ ...errors, confirmPasswordError: "" });
+        }
+        else {
+            setErrors({ ...errors, confirmPasswordError: "Password Mismatch" });
+            setUserInfo({ ...userInfo, confirmPassword: "" });
+        }
+
+    }
+
     const handleForm = (e) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(userInfo.email, userInfo.password);
+        e.preventDefault()
+        if (userInfo.password === userInfo.confirmPassword) {
+            createUserWithEmailAndPassword(userInfo.email, userInfo.password)
+        }
     }
 
     useEffect(() => {
         if (hookUser || googleUser) {
-            toast.success('Login successfully!')
+            toast.success('Signup successfully!')
             navigate('/');
         }
     }, [hookUser, googleUser, navigate])
 
     useEffect(() => {
         const dbError = hookError || googleError;
-        if (dbError?.message.includes('auth/user-not-found')) {
-            toast.error('User not Found')
-        }
-        else if (dbError?.message.includes('auth/uid-already-exists')) {
-            toast.error('Uid already exists')
-        }
-        else if (dbError?.message.includes('auth/uid-already-exists')) {
-            toast.error('Uid already exists')
-        }
-        else if (dbError?.message.includes('auth/email-already-exists')) {
-            toast.error('This email already exists')
-        }
-        else if (dbError?.message.includes('auth/internal-error')) {
-            toast.error('Internal Error Occurred')
-        }
-        else if (dbError?.message.includes('auth/invalid-email')) {
-            toast.error('Ivalid Email')
-        }
-        else if (dbError?.message.includes('auth/invalid-password')) {
-            toast.error('Ivalid Password')
-        }
+        // console.log(dbError?.message)
+
     }, [hookError, googleError])
 
     return (
-        <div className='form'>
+        <div className='form signup-form'>
             <div className="form-container">
                 <form onSubmit={handleForm}>
-                    <h3 className='form-title'>Login</h3>
+                    <h3 className='form-title'>Sign Up</h3>
+
+                    <div>
+                        <div className="input-field">
+                            <input onBlur={handleName} type="text" placeholder='Name' />
+                        </div>
+                        {errors.nameError && <p className='error-message'>{errors.nameError}</p>}
+                    </div>
+
                     <div>
                         <div className="input-field">
                             <input onBlur={handleEmail} type="email" placeholder='Email' />
@@ -102,24 +119,29 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <div onBlur={handlePassword} className="input-field">
-                            <input type="password" placeholder='Password' />
+                        <div className="input-field">
+                            <input onBlur={handlePassword} type="password" placeholder='Password' />
                         </div>
                         {errors.passwordError && <p className='error-message'>{errors.passwordError}</p>}
                     </div>
 
-
-                    <div className="input-field">
-                        <input type="submit" value="LOGIN" />
+                    <div>
+                        <div className="input-field">
+                            <input onBlur={handleConfirmPassword} type="password" placeholder='Confirm Password' />
+                        </div>
+                        {errors.confirmPasswordError && <p className='error-message'>{errors.confirmPasswordError}</p>}
                     </div>
 
-                    <Link to='/signup'>Don't have any account?</Link>
-                </form>
+                    <div className="input-field">
+                        <input type="submit" value="SIGNUP" />
+                    </div>
 
+                    <Link to='/login'>Already have an account?</Link>
+                </form>
                 <button onClick={() => signInWithGoogle()} className='btn form-btn'><i class="fa-brands fa-google"></i> Sign In with Google</button>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default SignUp;
