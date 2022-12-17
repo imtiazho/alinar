@@ -13,7 +13,8 @@ a{
 }
 body {
   background: #000;
-  font-family: 'Poppins', sans-serif;;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

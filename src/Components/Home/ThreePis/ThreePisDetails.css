@@ -1,0 +1,12 @@
+.threePis-details {
+    width: 80%;
+    margin: 3rem auto;
+    color: #ddd;
+}
+
+.image img{
+    max-height: 550px;
+    width: 100%;
+    object-fit: cover;
+
+}

@@ -1,4 +1,11 @@
-.best-selling-product{
+.best-selling-product {
     margin: 5rem auto;
     width: 80%;
+}
+
+.best-selling-product-container {
+    margin-top: 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
 }

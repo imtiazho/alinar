@@ -1,0 +1,81 @@
+.sharee-details {
+    width: 80%;
+    margin: 3rem auto;
+    color: #ddd;
+}
+
+.first-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.image {
+    flex: 1 1;
+}
+
+.pd-info-cart,
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-info {
+    gap: 0.7rem;
+}
+
+.product-info h2 {
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.product-info h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.product-info p span {
+    color: red;
+}
+
+.pd-info-cart {
+    flex: 1 1;
+    gap: 2rem;
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cart-btn p {
+    font-size: 14px;
+}
+
+.red-span {
+    color: red;
+}
+
+.second-row {
+    margin: 2rem 0;
+}
+
+.sub-title-product-details {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 1rem 0 1rem 0;
+}
+
+.more-info {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid #3a3a3a;
+}
+
+.sub-text {
+    font-size: 12px;
+}

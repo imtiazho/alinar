@@ -1,0 +1,39 @@
+.bestSellingProduct-card {
+    border: 1px solid #232323;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: #9CADB9;
+    transition: all 0.3s ease;
+}
+
+.bestSellingProduct-card:hover {
+    border: 1px solid #EEBF0E;
+}
+
+.bestSellingProduct-card img {
+    max-height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.bestSellingProduct-short-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+.bestSellingProduct-short-info h3 {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.bestSellingProduct-short-info p {
+    font-size: 15px;
+}

@@ -2,21 +2,29 @@ import './App.css';
 import { Routes, Route } from "react-router-dom"
 import HomeMain from './Components/Home/HomeMain/HomeMain';
 import Sharee from './Components/Home/Sharee/Sharee';
-import Panjabi from './Components/Home/Panjabi/Panjabi';
 import ThreePis from './Components/Home/ThreePis/ThreePis';
-import AllProducts from './Components/Home/AllProducts/AllProducts';
+import NavBar from './Components/Home/Navbar/NavBar';
+import Footer from './Components/Home/Footer/Footer';
+import ShareeDetails from './Components/Home/Sharee/ShareeDetails';
+import ThreePisDetails from './Components/Home/ThreePis/ThreePisDetails';
+import Abaya from './Components/Home/Abaya/Abaya';
+import AbayaCardDetails from './Components/Home/Abaya/AbayaCardDetails';
 
 function App() {
   return (
     <div>
+      <NavBar />
       <Routes>
         <Route path='/' element={<HomeMain></HomeMain>}>
-          <Route path='/allProducts' element={<AllProducts />}></Route>
           <Route path='/sharee' element={<Sharee />}></Route>
-          <Route path='/panjabi' element={<Panjabi />}></Route>
+          <Route path='/abaya' element={<Abaya />}></Route>
           <Route path='/3pis' element={<ThreePis />}></Route>
         </Route>
+        <Route path='/shareeDetails/:shareeId' element={<ShareeDetails />}></Route>
+        <Route path='/threePisDetails/:threePisDetailsId' element={<ThreePisDetails />}></Route>
+        <Route path='/abayaDetails/:abayaDetailsId' element={<AbayaCardDetails />}></Route>
       </Routes>
+      <Footer />
     </div>
   );
 }
