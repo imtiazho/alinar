@@ -3,10 +3,13 @@
     margin: auto;
     color: #9CADB9;
     padding: 2rem;
+    position: relative;
 }
-.swiper-wrapper-cus{
+
+.swiper-wrapper-cus {
     margin: 5rem 0;
 }
+
 .slide {
     cursor: pointer;
     background: #1E1E27;
@@ -26,22 +29,23 @@
     align-items: center;
 }
 
-.clientImage{
+.clientImage {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
     overflow: hidden;
 }
-.clientImage img{
+
+.clientImage img {
     max-width: 115%;
 }
 
-.slide p{
+.slide p {
     margin-top: 2rem;
     font-size: 15px;
 }
 
-.stars i{
+.stars i {
     font-size: 15px;
     margin: 0 3px;
     color: #EEBF0E;

@@ -1,24 +1,25 @@
-import React from 'react';
-import { useQuery } from 'react-query';
-import './ThreePis.css'
-import ThreePisCard from './ThreePisCard';
+import React from "react";
+import { useQuery } from "react-query";
+import ProductCard from "../../ProductCard/ProductCard";
 
 const ThreePis = () => {
-    const { isLoading, error, data: threePises } = useQuery('threePisData', () =>
-        fetch('http://localhost:5000/threePis').then(res =>
-            res.json()
-        )
-    )
-    if (isLoading) {
-        return <p>Loading...</p>
-    }
-    return (
-        <div className='threePis-section'>
-            {
-                threePises.map(threePis => <ThreePisCard threePis={threePis} key={threePis._id}></ThreePisCard>)
-            }
-        </div>
-    );
+  const {
+    isLoading,
+    error,
+    data: threePises,
+  } = useQuery("threePisData", () =>
+    fetch("http://localhost:5000/threePis").then((res) => res.json())
+  );
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  return (
+    <div className="common-product-section">
+      {threePises.map((product) => (
+        <ProductCard product={product} key={product._id}></ProductCard>
+      ))}
+    </div>
+  );
 };
 
 export default ThreePis;

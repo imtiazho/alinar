@@ -1,0 +1,38 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.shop{
+    width: 80%;
+    margin: 3rem auto;
+}
+
+.shop-container{
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    justify-content: center;
+}
+
+.shop-search-box {
+    position: relative;
+    width: 35%;
+    padding: 12px 15px;
+    margin: 0 auto;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #000;
+    border: 1px solid #232323;
+}
+
+.shop-search-box input {
+    background: transparent;
+    font-size: 15px;
+    color: #EEBF0E;
+    width: 100%;
+    height: 100%;
+}
+
+.shop-search-box input::placeholder{
+    color: #232323;
+}

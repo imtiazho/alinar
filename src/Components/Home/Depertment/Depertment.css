@@ -15,6 +15,7 @@
 .each-depertment {
     position: relative;
     overflow: hidden;
+    height: 190px;
 }
 
 .each-depertment h4 {

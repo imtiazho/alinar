@@ -8,16 +8,16 @@ const NewArraivals = () => {
         <div className='new-arrivals'>
             <h2 className='sention-title'> <p>Alinar</p> NEW ARRIVAL</h2>
             <div className='new-arrivals-container'>
-            <div className="items-short-nav">
-                <CustomLink to='/sharee'>SHAREE</CustomLink>
-                <CustomLink to='/abaya'>Abaya</CustomLink>
-                <CustomLink to='/3pis'>3 PIS</CustomLink>
-            </div>
+                <div className="items-short-nav">
+                    <CustomLink to='/'>SHAREE</CustomLink>
+                    <CustomLink to='/abaya'>Abaya</CustomLink>
+                    <CustomLink to='/3pis'>Three Pis</CustomLink>
+                </div>
 
-            <Outlet />
+                <Outlet />
 
 
-            <Link to='/cart' className='btn checkout-btn'>Checkout Your Items</Link>
+                <Link to='/cart' className='btn checkout-btn'>Checkout Your Items</Link>
             </div>
         </div>
     );

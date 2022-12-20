@@ -1,4 +1,4 @@
-.bestSellingProduct-card {
+.product-card {
     border: 1px solid #232323;
     padding: 10px;
 
@@ -10,17 +10,18 @@
     transition: all 0.3s ease;
 }
 
-.bestSellingProduct-card:hover {
+.product-card:hover {
     border: 1px solid #EEBF0E;
 }
 
-.bestSellingProduct-card img {
+.product-card img {
     max-height: 300px;
+    overflow: hidden;
     object-fit: cover;
     width: 100%;
 }
 
-.bestSellingProduct-short-info {
+.product-short-info {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -28,12 +29,12 @@
 
 }
 
-.bestSellingProduct-short-info h3 {
+.product-short-info h3 {
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
 }
 
-.bestSellingProduct-short-info p {
+.product-short-info p {
     font-size: 15px;
 }
