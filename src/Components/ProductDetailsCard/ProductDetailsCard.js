@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../App";
+import { addToLocalStorage } from "../../LocalStorage/ManageLocalStorage";
 import "./ProductDetailsCard.css";
 
 const ProductDetailsCard = ({ data }) => {
@@ -28,7 +30,74 @@ const ProductDetailsCard = ({ data }) => {
     dupattaMaterial,
     category,
   } = data;
+  // const [cart, setCart] = useState({});
+  const [cart, setCart] = useContext(CartContext);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [shareStatus, setShareStatus] = useState("");
 
+  const decreaseQuantity = () => {
+    if (productQuantity > 1) {
+      setProductQuantity(productQuantity - 1);
+    }
+  };
+  const increaseQuantity = () => {
+    setProductQuantity(productQuantity + 1);
+  };
+
+  const sharee = (e) => {
+    setShareStatus(e.target.value);
+  };
+
+  const haandleAddToCart = (itemToAdd) => {
+    const {
+      _id,
+      handCodedId,
+      name,
+      priceSet,
+      stock,
+      img,
+      ratings,
+      deliveryInDhaka,
+      deliveryOutDhaka,
+      shortDesc,
+      typeOfProduct,
+      body,
+      Long,
+      colorGurrenty,
+      quantity,
+      priceJustSharee,
+      shareeLong,
+      productMaterial,
+      panjabiSize,
+      note,
+      pantMaterial,
+      brand,
+      dupattaMaterial,
+      category,
+    } = itemToAdd;
+
+    const productAddToCart = {
+      _id,
+      handCodedId,
+      name,
+      img,
+      typeOfProduct,
+      priceSet,
+      priceJustSharee,
+      brand,
+      category,
+      deliveryInDhaka,
+      deliveryOutDhaka,
+      shareStatus,
+      quantity: productQuantity,
+    };
+
+    const newcart = [...cart, productAddToCart];
+    setCart(newcart);
+
+    addToLocalStorage(productAddToCart);
+  };
+  console.log(cart);
   return (
     <div className="product-details">
       <div className="first-row">
@@ -56,11 +125,52 @@ const ProductDetailsCard = ({ data }) => {
             )}
           </div>
 
+          {priceJustSharee && (
+            <div className="set-or-single-sharee">
+              <span>
+                <input
+                  onClick={sharee}
+                  type="radio"
+                  name="priceBox"
+                  value="shareSet"
+                  id="shareeSet"
+                />
+                <label for="shareeSet">Sharee with Panjabi</label>
+              </span>
+              <span>
+                <input
+                  onClick={sharee}
+                  type="radio"
+                  name="priceBox"
+                  value="shareOnly"
+                  id="sharee"
+                />
+                <label for="sharee">Only Sharee</label>
+              </span>
+            </div>
+          )}
+
           <div className="cart-btn">
-            <button className="btn">
+            <div className="quantity-controler">
+              <button className="btn" onClick={decreaseQuantity}>
+                -
+              </button>
+              <div className="quantity">{productQuantity}</div>
+              <button className="btn" onClick={increaseQuantity}>
+                +
+              </button>
+            </div>
+
+            <button onClick={() => haandleAddToCart(data)} className="btn">
               Add to Cart <i className="fa-solid fa-cart-shopping"></i>
             </button>
-            {/* <p> <span>*</span>প্রোডাক্টের কোয়ান্টিটি বাড়াতে আবার ক্লিক করুন</p> */}
+            {/* {cart.length > 0 && (
+              <p>
+                {" "}
+                <span className="red-span">*</span>প্রোডাক্টের কোয়ান্টিটি
+                বাড়াতে আবার ক্লিক করুন
+              </p>
+            )} */}
           </div>
         </div>
       </div>

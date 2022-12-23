@@ -8,11 +8,12 @@ const ThreePis = () => {
     error,
     data: threePises,
   } = useQuery("threePisData", () =>
-    fetch("http://localhost:5000/threePis").then((res) => res.json())
+    fetch("http://localhost:5000/threePises/threePis").then((res) => res.json())
   );
   if (isLoading) {
     return <p>Loading...</p>;
   }
+
   return (
     <div className="common-product-section">
       {threePises.map((product) => (

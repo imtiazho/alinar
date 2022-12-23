@@ -38,7 +38,15 @@
     border: 1px solid #EEBF0E;
     transition: all 0.3s ease;
     cursor: pointer;
-    font-family: 'Poppins', sans-serif;;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn i {
+    font-size: 17px;
 }
 
 .btn:hover {

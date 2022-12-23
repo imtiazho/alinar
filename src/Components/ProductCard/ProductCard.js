@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       <button className="btn">
-        Add to Cart <i className="fa-solid fa-cart-shopping"></i>
+        Click for details <i class="fa-solid fa-circle-info"></i>
       </button>
     </Link>
   );

@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { createContext, useState } from "react";
 import HomeMain from "./Components/Home/HomeMain/HomeMain";
 import Sharee from "./Components/Home/Sharee/Sharee";
 import ThreePis from "./Components/Home/ThreePis/ThreePis";
@@ -16,10 +17,15 @@ import About from "./Components/About/About";
 import Shop from "./Components/Shop/Shop";
 import ShopProductDetails from "./Components/Shop/ShopProductDetails";
 import BestSellingProductsDetails from "./Components/Home/BestSellingProduct/BestSellingProductsDetails";
+import Cart from "./Components/Cart/Cart";
+
+export const CartContext = createContext();
 
 function App() {
+  const [cart, setCart] = useState([]);
+
   return (
-    <div>
+    <CartContext.Provider value={[cart, setCart]}>
       <NavBar />
       <Routes>
         <Route path="/" element={<HomeMain></HomeMain>}>
@@ -51,10 +57,11 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
       <Footer />
       <Toaster />
-    </div>
+    </CartContext.Provider>
   );
 }
 

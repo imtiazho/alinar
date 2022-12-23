@@ -5,7 +5,7 @@ import "./BestSellingProduct.css";
 
 const BestSellingProduct = () => {
   const { isLoading, error, data } = useQuery("bestSellingProduct", () =>
-    fetch("http://localhost:5000/bestSellingProduct").then((res) => res.json())
+    fetch("http://localhost:5000/bestSellingProducts").then((res) => res.json())
   );
 
   if (isLoading) {

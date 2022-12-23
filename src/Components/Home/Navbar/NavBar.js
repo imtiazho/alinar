@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UpperNav from "../UpperNav/UpperNav";
 import "./NavBar.css";
@@ -10,12 +10,15 @@ import auth from "../../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
 import anonymousUser from "../../../assets/anonymous_user.png";
 import { toast } from "react-hot-toast";
+import { CartContext } from "../../../App";
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
   const [navStatus, steNavOpen] = useState(false);
   const [userSettingOpen, setuserSettingOpen] = useState(false);
   const navigate = useNavigate();
+  const [cart, setCart] = useContext(CartContext);
+
   const menuItems = (
     <>
       <li>
@@ -40,8 +43,16 @@ const NavBar = () => {
     setuserSettingOpen(false);
   };
 
+  let quantity = 0;
+  for (const item of cart) {
+    quantity = quantity + item.quantity;
+  }
+
   if (loading) {
     return <p>Loading...</p>;
+  }
+  if (error) {
+    console.log(error);
   }
 
   return (
@@ -60,7 +71,7 @@ const NavBar = () => {
               <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping"></i>
               </Link>
-              <span className="cart-length">5</span>
+              <span className="cart-length">{quantity}</span>
             </li>
 
             {user ? (
