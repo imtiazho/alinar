@@ -30,10 +30,17 @@ const ProductDetailsCard = ({ data }) => {
     dupattaMaterial,
     category,
   } = data;
-  // const [cart, setCart] = useState({});
   const [cart, setCart] = useContext(CartContext);
   const [productQuantity, setProductQuantity] = useState(1);
-  const [shareStatus, setShareStatus] = useState("");
+  const [deliveryAndShareStatus, setDeliveryAndShareStatus] = useState({
+    shareStatus: "",
+    deliveryLocation: "",
+  });
+  const [deliveryAndShareStatusError, setDeliveryAndShareStatusError] =
+    useState({
+      shareStatusError: "",
+      deliveryLocationError: "",
+    });
 
   const decreaseQuantity = () => {
     if (productQuantity > 1) {
@@ -44,12 +51,28 @@ const ProductDetailsCard = ({ data }) => {
     setProductQuantity(productQuantity + 1);
   };
 
-  const sharee = (e) => {
-    setShareStatus(e.target.value);
+  const aboutShareStaus = (e) => {
+    if (e.target.value) {
+      setDeliveryAndShareStatus({
+        ...deliveryAndShareStatus,
+        shareStatus: e.target.value,
+      });
+    }
+  };
+
+  const deliveryDestination = (e) => {
+    if (e.target.value) {
+      setDeliveryAndShareStatus({
+        ...deliveryAndShareStatus,
+        deliveryLocation: e.target.value,
+      });
+    }
   };
 
   const haandleAddToCart = (itemToAdd) => {
-    const {
+    const shareStatusToCart = deliveryAndShareStatus.shareStatus;
+    const deliveryDestinationToCart = deliveryAndShareStatus.deliveryLocation;
+    let {
       _id,
       handCodedId,
       name,
@@ -76,6 +99,14 @@ const ProductDetailsCard = ({ data }) => {
       category,
     } = itemToAdd;
 
+    if (shareStatusToCart === "shareSet") {
+      priceSet = priceSet;
+    } else if (shareStatusToCart === "shareOnly") {
+      priceSet = priceJustSharee;
+    } else {
+      priceSet = priceSet;
+    }
+
     const productAddToCart = {
       _id,
       handCodedId,
@@ -83,21 +114,55 @@ const ProductDetailsCard = ({ data }) => {
       img,
       typeOfProduct,
       priceSet,
-      priceJustSharee,
       brand,
       category,
       deliveryInDhaka,
       deliveryOutDhaka,
-      shareStatus,
+      shareStatusToCart,
+      deliveryDestinationToCart,
       quantity: productQuantity,
     };
 
-    const newcart = [...cart, productAddToCart];
-    setCart(newcart);
-
-    addToLocalStorage(productAddToCart);
+    if (!shareStatusToCart && !deliveryDestinationToCart) {
+      setDeliveryAndShareStatusError({
+        shareStatusError: "Sharee Check Mark Is required",
+        deliveryLocationError: "Delivery Point Is required",
+      });
+    } else if (!shareStatusToCart) {
+      setDeliveryAndShareStatusError({
+        ...deliveryAndShareStatusError,
+        shareStatusError: "Sharee Check Mark Is required",
+      });
+    } else if (!deliveryDestinationToCart) {
+      setDeliveryAndShareStatusError({
+        ...deliveryAndShareStatusError,
+        deliveryLocationError: "Delivery Point Is required",
+      });
+    }
+    if (shareStatusToCart || deliveryDestinationToCart) {
+      addToLocalStorage(productAddToCart);
+      setCart([...cart, productAddToCart]);
+      setDeliveryAndShareStatusError({
+        shareStatusError: "",
+        deliveryLocationError: "",
+      });
+    }
+    // addToLocalStorage(productAddToCart);
+    // setCart([...cart, productAddToCart]);
+    // setDeliveryAndShareStatusError({
+    //   shareStatusError: "",
+    //   deliveryLocationError: "",
+    // });
+    // else if (deliveryDestinationToCart) {
+    //   addToLocalStorage(productAddToCart);
+    //   setCart([...cart, productAddToCart]);
+    //   setDeliveryAndShareStatusError({
+    //     shareStatusError: "",
+    //     deliveryLocationError: "",
+    //   });
+    // }
   };
-  console.log(cart);
+
   return (
     <div className="product-details">
       <div className="first-row">
@@ -126,28 +191,67 @@ const ProductDetailsCard = ({ data }) => {
           </div>
 
           {priceJustSharee && (
-            <div className="set-or-single-sharee">
-              <span>
-                <input
-                  onClick={sharee}
-                  type="radio"
-                  name="priceBox"
-                  value="shareSet"
-                  id="shareeSet"
-                />
-                <label for="shareeSet">Sharee with Panjabi</label>
-              </span>
-              <span>
-                <input
-                  onClick={sharee}
-                  type="radio"
-                  name="priceBox"
-                  value="shareOnly"
-                  id="sharee"
-                />
-                <label for="sharee">Only Sharee</label>
-              </span>
-            </div>
+            <>
+              <div className="set-or-single-sharee">
+                <span>
+                  <input
+                    onClick={aboutShareStaus}
+                    type="radio"
+                    name="priceBox"
+                    value="shareSet"
+                    id="shareeSet"
+                  />
+                  <label for="shareeSet">Sharee with Panjabi</label>
+                </span>
+                <span>
+                  <input
+                    onClick={aboutShareStaus}
+                    type="radio"
+                    name="priceBox"
+                    value="shareOnly"
+                    id="sharee"
+                  />
+                  <label for="sharee">Only Sharee</label>
+                </span>
+              </div>
+              {deliveryAndShareStatusError.shareStatusError && (
+                <p className="error-text">
+                  {deliveryAndShareStatusError.shareStatusError}
+                </p>
+              )}
+            </>
+          )}
+
+          {deliveryOutDhaka && (
+            <>
+              <div className="set-or-single-sharee">
+                <span>
+                  <input
+                    onClick={deliveryDestination}
+                    type="radio"
+                    name="deliveryLocation"
+                    value="inSideDhaka"
+                    id="insideDhaka"
+                  />
+                  <label for="insideDhaka">In side Dhaka</label>
+                </span>
+                <span>
+                  <input
+                    onClick={deliveryDestination}
+                    type="radio"
+                    name="deliveryLocation"
+                    value="outSideDhaka"
+                    id="outsideDhaka"
+                  />
+                  <label for="outsideDhaka">Out side Dhaka</label>
+                </span>
+              </div>
+              {deliveryAndShareStatusError.deliveryLocationError && (
+                <p className="error-text">
+                  {deliveryAndShareStatusError.deliveryLocationError}
+                </p>
+              )}
+            </>
           )}
 
           <div className="cart-btn">

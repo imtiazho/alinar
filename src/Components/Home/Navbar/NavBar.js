@@ -11,6 +11,7 @@ import { signOut } from "firebase/auth";
 import anonymousUser from "../../../assets/anonymous_user.png";
 import { toast } from "react-hot-toast";
 import { CartContext } from "../../../App";
+import { getStoredCart } from "../../../LocalStorage/ManageLocalStorage";
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -18,7 +19,7 @@ const NavBar = () => {
   const [userSettingOpen, setuserSettingOpen] = useState(false);
   const navigate = useNavigate();
   const [cart, setCart] = useContext(CartContext);
-
+  const storedCart = getStoredCart();
   const menuItems = (
     <>
       <li>
@@ -43,9 +44,14 @@ const NavBar = () => {
     setuserSettingOpen(false);
   };
 
-  let quantity = 0;
+  let quantityFromStoredCart = 0;
+  for (const item of storedCart) {
+    quantityFromStoredCart = quantityFromStoredCart + item.quantity;
+  }
+
+  let quantityFromSeasonCart = 0;
   for (const item of cart) {
-    quantity = quantity + item.quantity;
+    quantityFromSeasonCart = quantityFromSeasonCart + item.quantity;
   }
 
   if (loading) {
@@ -71,7 +77,9 @@ const NavBar = () => {
               <Link to="/cart">
                 <i className="fa-solid fa-cart-shopping"></i>
               </Link>
-              <span className="cart-length">{quantity}</span>
+              <span className="cart-length">
+                {quantityFromStoredCart || quantityFromSeasonCart}
+              </span>
             </li>
 
             {user ? (

@@ -27,6 +27,7 @@ const CartItem = ({ item }) => {
     removeFromLocalStorage(id);
   };
 
+  console.log(item);
   return (
     <div className="item">
       <img src={img} alt="" />

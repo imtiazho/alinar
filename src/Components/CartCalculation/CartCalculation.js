@@ -17,15 +17,28 @@ const CartCalculation = ({ storedCart }) => {
     category,
     deliveryInDhaka,
     deliveryOutDhaka,
-    shareStatus,
+    shareStatusToCart,
+    deliveryDestinationToCart,
     quantity,
   } = storedCart;
+  console.log(storedCart);
 
-  // ei form e kichu checkbox thakbe jate kore delivery charge r share er conditional pricing ta bhalo vab count krte paro!
+  let productQuantity = 0;
+  let productPrice = 0;
+  let deliveryCharge = 0;
 
-  let subTotal = 0;
   for (const product of storedCart) {
-    subTotal = subTotal + product.priceSet;
+    productQuantity = productQuantity + product.quantity;
+    productPrice = productPrice + product.priceSet * product.quantity;
+    deliveryCharge = product.deliveryDestinationToCart;
+  }
+
+  if (deliveryCharge === "inSideDhaka") {
+    deliveryCharge = 80;
+  } else if (deliveryCharge === "outSideDhaka") {
+    deliveryCharge = 110;
+  } else {
+    deliveryCharge = 0;
   }
 
   return (
@@ -34,18 +47,18 @@ const CartCalculation = ({ storedCart }) => {
 
       <div className="calculate-item">
         <div className="each-info">
-          <p>Sub-total:</p>
-          <p>৳ {subTotal}</p>
+          <p>Product Price</p>
+          <p>৳ {productPrice}</p>
         </div>
 
         <div className="each-info">
-          <p>Delivery Charge:</p>
-          <p>৳ {subTotal}</p>
+          <p>Delivery Charge</p>
+          <p>৳ {deliveryCharge}</p>
         </div>
 
         <div className="each-info">
-          <h4>Total:</h4>
-          <h4>৳ {parseInt(subTotal + subTotal)}</h4>
+          <h4>Total</h4>
+          <h4>৳ {parseInt(productPrice + deliveryCharge)}</h4>
         </div>
       </div>
 

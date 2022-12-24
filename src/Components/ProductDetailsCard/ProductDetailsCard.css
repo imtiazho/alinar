@@ -59,7 +59,6 @@
 .set-or-single-sharee input {
     width: 20px;
     height: 20px;
-    color: aqua;
     cursor: pointer;
 }
 
@@ -123,8 +122,8 @@
 }
 
 input[type='radio']:after {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     border-radius: 15px;
     top: 0;
     left: 0;
@@ -137,8 +136,8 @@ input[type='radio']:after {
 }
 
 input[type='radio']:checked:after {
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
     border-radius: 15px;
     top: 0;
     left: 0px;
@@ -147,5 +146,10 @@ input[type='radio']:checked:after {
     content: '';
     display: inline-block;
     visibility: visible;
-    /* border: 2px solid white; */
+}
+.error-text{
+    color: red;
+    font-size: 12px;
+    margin-top: -20px;
+    
 }

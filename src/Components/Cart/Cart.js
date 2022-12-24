@@ -6,6 +6,7 @@ import "./Cart.css";
 
 const Cart = () => {
   const storedCart = getStoredCart();
+
   return (
     <div className="cart">
       <div className="ordered-items">
