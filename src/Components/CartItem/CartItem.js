@@ -4,7 +4,8 @@ import { removeFromLocalStorage } from "../../LocalStorage/ManageLocalStorage";
 import "./CartItem.css";
 
 const CartItem = ({ item }) => {
-  const [cart, setCart] = useContext(CartContext);
+  const { cartState, shippingInfoState } = useContext(CartContext);
+  const [cart, setCart] = cartState;
   const {
     _id,
     handCodedId,

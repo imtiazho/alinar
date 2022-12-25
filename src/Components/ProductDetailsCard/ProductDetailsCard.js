@@ -30,7 +30,9 @@ const ProductDetailsCard = ({ data }) => {
     dupattaMaterial,
     category,
   } = data;
-  const [cart, setCart] = useContext(CartContext);
+  const { cartState, shippingInfoState } = useContext(CartContext);
+  const [cart, setCart] = cartState;
+
   const [productQuantity, setProductQuantity] = useState(1);
   const [deliveryAndShareStatus, setDeliveryAndShareStatus] = useState({
     shareStatus: "",
@@ -139,7 +141,10 @@ const ProductDetailsCard = ({ data }) => {
         deliveryLocationError: "Delivery Point Is required",
       });
     }
-    if (shareStatusToCart || deliveryDestinationToCart) {
+    if (
+      (shareStatusToCart && deliveryDestinationToCart) ||
+      deliveryDestinationToCart
+    ) {
       addToLocalStorage(productAddToCart);
       setCart([...cart, productAddToCart]);
       setDeliveryAndShareStatusError({

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UpperNav from "../UpperNav/UpperNav";
 import "./NavBar.css";
@@ -18,8 +18,10 @@ const NavBar = () => {
   const [navStatus, steNavOpen] = useState(false);
   const [userSettingOpen, setuserSettingOpen] = useState(false);
   const navigate = useNavigate();
-  const [cart, setCart] = useContext(CartContext);
+  const { cartState, shippingInfoState } = useContext(CartContext);
+  const [cart, setCart] = cartState;
   const storedCart = getStoredCart();
+
   const menuItems = (
     <>
       <li>
@@ -44,14 +46,14 @@ const NavBar = () => {
     setuserSettingOpen(false);
   };
 
-  let quantityFromStoredCart = 0;
-  for (const item of storedCart) {
-    quantityFromStoredCart = quantityFromStoredCart + item.quantity;
-  }
-
   let quantityFromSeasonCart = 0;
   for (const item of cart) {
     quantityFromSeasonCart = quantityFromSeasonCart + item.quantity;
+  }
+
+  let quantityFromStoredCart = 0;
+  for (const item of storedCart) {
+    quantityFromStoredCart = quantityFromStoredCart + item.quantity;
   }
 
   if (loading) {

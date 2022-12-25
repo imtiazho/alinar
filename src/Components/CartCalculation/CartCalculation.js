@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../App";
+import { addFinalCaltulate } from "../../LocalStorage/ManageLocalStorage";
 import "./CartCalculation.css";
 
 const CartCalculation = ({ storedCart }) => {
-  const [cart, setCart] = useContext(CartContext);
+  const navigate = useNavigate();
   const {
     _id,
     handCodedId,
@@ -41,6 +42,19 @@ const CartCalculation = ({ storedCart }) => {
     deliveryCharge = 0;
   }
 
+  const finalCalculating = () => {
+    const finalCalculate = {
+      productPrice: productPrice,
+      deliveryCharge: deliveryCharge,
+      totalPrice: parseInt(productPrice + deliveryCharge),
+      productQuantity: productQuantity,
+    };
+    if (finalCalculate) {
+      addFinalCaltulate(finalCalculate);
+      navigate("/shipping");
+    }
+  };
+
   return (
     <div className="cart-calculation">
       <h3>Order Summary</h3>
@@ -67,6 +81,7 @@ const CartCalculation = ({ storedCart }) => {
           storedCart.length > 0 ? "place-order-btn" : "place-order-btn-disabled"
         }
         disabled={storedCart.length < 0}
+        onClick={finalCalculating}
       >
         Place Order
       </button>
