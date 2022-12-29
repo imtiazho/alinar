@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-import logo from "../../assets/logo.png";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { toast } from "react-hot-toast";
+import Spinner from "../Spinner/Spinner";
 
 const Login = () => {
   const [signInWithEmailAndPassword, hookUser, hookLoading, hookError] =
@@ -15,6 +15,8 @@ const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const [userInfo, setUserInfo] = useState({
     email: "",
@@ -60,9 +62,9 @@ const Login = () => {
   useEffect(() => {
     if (hookUser || googleUser) {
       toast.success("Login successfully!");
-      navigate("/");
+      navigate(from, { replace: true });
     }
-  }, [hookUser, googleUser, navigate]);
+  }, [hookUser, googleUser, navigate, from]);
 
   useEffect(() => {
     const dbError = hookError || googleError;
@@ -82,6 +84,10 @@ const Login = () => {
       toast.error("Ivalid Password");
     }
   }, [hookError, googleError]);
+
+  if (hookLoading || googleLoading) {
+    return <Spinner />
+  }
 
   return (
     <div className="form">

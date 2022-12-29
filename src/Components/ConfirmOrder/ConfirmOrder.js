@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-hot-toast";
 import { CartContext } from "../../App";
 import auth from "../../Firebase/Firebase.init";
 import {
+  deleteShoppingCart,
   getCalculation,
   getStoredCart,
 } from "../../LocalStorage/ManageLocalStorage";
@@ -26,7 +28,6 @@ const ConfirmOrder = () => {
     productImg = productImg + ", " + item.img;
   }
 
-  console.log(productName);
   const handleConfirmOrder = () => {
     const orderData = {
       clientName: shippingInfoToFinal?.name,
@@ -43,18 +44,26 @@ const ConfirmOrder = () => {
       productQuantity: productQuantity,
       totalPrice: totalPrice,
     };
-    console.log(orderData);
-    fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(orderData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-      });
+
+    if (orderData.clientName && orderData.clientEmail && orderData.clientPhone && orderData.clientDistrict && orderData.clientThana && orderData.clientVillage && orderData.productName && orderData.productImg && orderData.productStatus && orderData.productPrice && orderData.deliveryCharge && orderData.productQuantity && orderData.totalPrice) {
+      fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.acknowledged === true) {
+            deleteShoppingCart();
+            toast.success('Order done is done!')
+          }
+        });
+    }
+    else {
+      toast.error('Check your cart! maybe your cart is empty!')
+    }
   };
 
   return (

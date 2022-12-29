@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import ProductCard from "../ProductCard/ProductCard";
+import Spinner from "../Spinner/Spinner";
 import "./Shop.css";
 
 const Shop = () => {
-  const { isLoading, error, data } = useQuery("allProducts", () =>
+  const [query, setQuery] = useState("");
+  const { isLoading, error, data } = useQuery("bestSellingProduct", () =>
     fetch("http://localhost:5000/allProducts").then((res) => res.json())
   );
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
-  console.log(data);
-  return (
-    <div className="shop">
-      <div className="shop-search-box">
-        <input placeholder="Just type that you want..." type="text" />
-      </div>
+  else {
+    return (
+      <div className="shop">
+        <div className="shop-search-box">
+          <input onChange={e => setQuery(e.target.value)} placeholder="Just type that you want..." type="text" />
+        </div>
 
-      <div className="shop-container">
-        {data.map((product) => (
-          <ProductCard product={product} key={product._id}></ProductCard>
-        ))}
+        <div className="shop-container">
+          {data.filter(product => product.handCodedId.toLowerCase().includes(query)).map((product) => (
+            <ProductCard product={product} key={product._id}></ProductCard>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 };
 
 export default Shop;

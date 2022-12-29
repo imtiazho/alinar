@@ -22,7 +22,7 @@ const About = () => {
                 </div>
             </div>
 
-            <Link className='btn' to='/shop'>SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></Link>
+            <Link className='about-btn' to='/shop'>SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></Link>
         </div>
     );
 };

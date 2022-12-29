@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import ProductCard from "../../ProductCard/ProductCard";
+import Spinner from "../../Spinner/Spinner";
 
 const ThreePis = () => {
   const {
@@ -11,7 +12,7 @@ const ThreePis = () => {
     fetch("http://localhost:5000/threePises/threePis").then((res) => res.json())
   );
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

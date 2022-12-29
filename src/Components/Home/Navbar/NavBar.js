@@ -12,6 +12,7 @@ import anonymousUser from "../../../assets/anonymous_user.png";
 import { toast } from "react-hot-toast";
 import { CartContext } from "../../../App";
 import { getStoredCart } from "../../../LocalStorage/ManageLocalStorage";
+import Spinner from "../../Spinner/Spinner";
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -57,12 +58,12 @@ const NavBar = () => {
   }
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
   if (error) {
     console.log(error);
   }
-
+  console.log(user)
   return (
     <div className="main-nav">
       <UpperNav />
@@ -86,19 +87,7 @@ const NavBar = () => {
 
             {user ? (
               <li className="user-icon">
-                {user?.photoURL ? (
-                  <img
-                    onClick={() => setuserSettingOpen(!userSettingOpen)}
-                    src={user.photoURL}
-                    alt=""
-                  />
-                ) : (
-                  <img
-                    onClick={() => setuserSettingOpen(!userSettingOpen)}
-                    src={anonymousUser}
-                    alt=""
-                  />
-                )}
+                <img onClick={() => setuserSettingOpen(!userSettingOpen)} src={`${user.photoURL ? user.photoURL : anonymousUser}`} alt="" />
 
                 {userSettingOpen && (
                   <div className="user-settings">

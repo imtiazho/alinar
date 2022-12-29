@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import ProductCard from "../../ProductCard/ProductCard";
+import Spinner from "../../Spinner/Spinner";
 import "./BestSellingProduct.css";
 
 const BestSellingProduct = () => {
@@ -9,7 +10,7 @@ const BestSellingProduct = () => {
   );
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { CartContext } from "../../App";
 import { addToLocalStorage } from "../../LocalStorage/ManageLocalStorage";
 import "./ProductDetailsCard.css";
@@ -147,25 +148,12 @@ const ProductDetailsCard = ({ data }) => {
     ) {
       addToLocalStorage(productAddToCart);
       setCart([...cart, productAddToCart]);
+      toast.success('Added in cart');
       setDeliveryAndShareStatusError({
         shareStatusError: "",
         deliveryLocationError: "",
       });
     }
-    // addToLocalStorage(productAddToCart);
-    // setCart([...cart, productAddToCart]);
-    // setDeliveryAndShareStatusError({
-    //   shareStatusError: "",
-    //   deliveryLocationError: "",
-    // });
-    // else if (deliveryDestinationToCart) {
-    //   addToLocalStorage(productAddToCart);
-    //   setCart([...cart, productAddToCart]);
-    //   setDeliveryAndShareStatusError({
-    //     shareStatusError: "",
-    //     deliveryLocationError: "",
-    //   });
-    // }
   };
 
   return (

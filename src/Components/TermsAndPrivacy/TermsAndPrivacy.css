@@ -1,0 +1,44 @@
+#top-banner {
+  background: linear-gradient(to top, #2f3a4ade, #2f3a4ade),
+    url("../../assets//privacy-policy.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+.privacy-terms-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+#top-banner .privacy-terms-container h5,
+#top-banner .privacy-terms-container p a,
+#top-banner .privacy-terms-container p {
+  color: #fff;
+}
+#top-banner .privacy-terms-container h5 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  word-spacing: 3px;
+}
+#top-banner .privacy-terms-container p {
+  font-weight: 300;
+}
+#main-details .privacy-terms-container {
+  width: 80%;
+  padding: 2rem;
+  border: 1px solid #232323;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 4rem auto;
+  color: #9cadb9;
+}
+#main-details .privacy-terms-container h3 {
+  font-weight: 500;
+}

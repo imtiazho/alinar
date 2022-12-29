@@ -1,0 +1,32 @@
+.blogs {
+  margin: 2rem auto;
+  color: #9cadb9;
+}
+
+.blogs .container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.blogs .container h3 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.blogs .container small {
+  color: #9d9c9c;
+  font-weight: 300;
+}
+
+.blogs .container img {
+  margin: 1.5rem 0 2rem;
+  border-radius: 5px;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blogs .container div {
+  margin-bottom: 0.4rem;
+}

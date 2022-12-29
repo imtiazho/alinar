@@ -22,7 +22,6 @@ const CartCalculation = ({ storedCart }) => {
     deliveryDestinationToCart,
     quantity,
   } = storedCart;
-  console.log(storedCart);
 
   let productQuantity = 0;
   let productPrice = 0;
@@ -80,7 +79,7 @@ const CartCalculation = ({ storedCart }) => {
         className={
           storedCart.length > 0 ? "place-order-btn" : "place-order-btn-disabled"
         }
-        disabled={storedCart.length < 0}
+        disabled={storedCart.length < 1}
         onClick={finalCalculating}
       >
         Place Order

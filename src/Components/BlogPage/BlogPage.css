@@ -1,0 +1,23 @@
+.all-blogs {
+  width: 80%;
+  margin: 3rem auto;
+}
+
+.blog-container {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+h2.blog-page {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+p.blog-page {
+  font-size: 15px;
+  margin: 0.7rem 0;
+  color: #9cadb9;
+  font-weight: 300;
+}

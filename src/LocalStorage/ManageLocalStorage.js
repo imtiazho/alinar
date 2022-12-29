@@ -56,6 +56,7 @@ const removeFromLocalStorage = (id) => {
 
 const deleteShoppingCart = () => {
   localStorage.removeItem("shopping-cart");
+  localStorage.removeItem("final-calculation");
 };
 
 export {

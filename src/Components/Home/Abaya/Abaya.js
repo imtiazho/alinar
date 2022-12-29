@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import "./Abaya.css";
 import ProductCard from "../../ProductCard/ProductCard";
+import Spinner from "../../Spinner/Spinner";
 
 const Abaya = () => {
   const {
@@ -13,7 +14,7 @@ const Abaya = () => {
   );
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

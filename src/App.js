@@ -20,6 +20,11 @@ import BestSellingProductsDetails from "./Components/Home/BestSellingProduct/Bes
 import Cart from "./Components/Cart/Cart";
 import ShipingInfo from "./Components/ShipingInfo/ShipingInfo";
 import ConfirmOrder from "./Components/ConfirmOrder/ConfirmOrder";
+import BlogDetails from "./Components/BlogDetails/BlogDetails";
+import BlogPage from "./Components/BlogPage/BlogPage";
+import Spinner from "./Components/Spinner/Spinner";
+import TermsAndPrivacy from "./Components/TermsAndPrivacy/TermsAndPrivacy";
+import RequireAuth from "./RequireAuth/RequireAuth";
 
 export const CartContext = createContext();
 
@@ -65,9 +70,20 @@ function App() {
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/shop" element={<Shop />}></Route>
+        <Route path="/blogs" element={<BlogPage />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/shipping" element={<ShipingInfo />}></Route>
-        <Route path="/confirmOrder" element={<ConfirmOrder />}></Route>
+        <Route path="/shipping" element={
+          <RequireAuth>
+            <ShipingInfo />
+          </RequireAuth>
+        }></Route>
+        <Route path="/confirmOrder" element={
+          <RequireAuth>
+            <ConfirmOrder />
+          </RequireAuth>
+        }></Route>
+        <Route path="/blogDetails" element={<BlogDetails />}></Route>
+        <Route path="/termsAndPrivacy" element={<TermsAndPrivacy />}></Route>
       </Routes>
       <Footer />
       <Toaster />

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../App";
 import { getStoredCart } from "../../LocalStorage/ManageLocalStorage";
@@ -146,6 +147,7 @@ const ShipingInfo = () => {
       };
       setShippingInfoToFinal(ShipingInfo);
       navigate("/confirmOrder");
+      toast.success('Saved Your Infomation')
     }
   };
   console.log(shippingInfoToFinal);

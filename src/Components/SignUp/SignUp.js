@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import {
   useCreateUserWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { toast } from "react-hot-toast";
+import Spinner from "../Spinner/Spinner";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, hookUser, hookLoading, hookError] =
@@ -14,6 +15,8 @@ const SignUp = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const [userInfo, setUserInfo] = useState({
     name: "",
@@ -75,9 +78,15 @@ const SignUp = () => {
   const handleForm = (e) => {
     e.preventDefault();
     if (userInfo.password === userInfo.confirmPassword) {
-      createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+      createUserWithEmailAndPassword(userInfo.email, userInfo.password, userInfo.name);
     }
   };
+
+  useEffect(() => {
+    if (hookLoading || googleLoading) {
+      return <Spinner />
+    }
+  }, [hookLoading, googleLoading]);
 
   useEffect(() => {
     if (hookUser || googleUser) {
@@ -85,10 +94,15 @@ const SignUp = () => {
       navigate("/");
     }
   }, [hookUser, googleUser, navigate]);
+  useEffect(() => {
+    if (hookUser || googleUser) {
+      toast.success("Signup successfully!");
+      navigate(from, { replace: true });
+    }
+  }, [hookUser, googleUser, navigate]);
 
   useEffect(() => {
     const dbError = hookError || googleError;
-    // console.log(dbError?.message)
   }, [hookError, googleError]);
 
   return (
