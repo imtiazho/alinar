@@ -194,7 +194,7 @@ const ProductDetailsCard = ({ data }) => {
                     value="shareSet"
                     id="shareeSet"
                   />
-                  <label for="shareeSet">Sharee with Panjabi</label>
+                  <label htmlFor="shareeSet">Sharee with Panjabi</label>
                 </span>
                 <span>
                   <input
@@ -204,7 +204,7 @@ const ProductDetailsCard = ({ data }) => {
                     value="shareOnly"
                     id="sharee"
                   />
-                  <label for="sharee">Only Sharee</label>
+                  <label htmlFor="sharee">Only Sharee</label>
                 </span>
               </div>
               {deliveryAndShareStatusError.shareStatusError && (
@@ -226,7 +226,7 @@ const ProductDetailsCard = ({ data }) => {
                     value="inSideDhaka"
                     id="insideDhaka"
                   />
-                  <label for="insideDhaka">In side Dhaka</label>
+                  <label htmlFor="insideDhaka">In side Dhaka</label>
                 </span>
                 <span>
                   <input
@@ -236,7 +236,7 @@ const ProductDetailsCard = ({ data }) => {
                     value="outSideDhaka"
                     id="outsideDhaka"
                   />
-                  <label for="outsideDhaka">Out side Dhaka</label>
+                  <label htmlFor="outsideDhaka">Out side Dhaka</label>
                 </span>
               </div>
               {deliveryAndShareStatusError.deliveryLocationError && (

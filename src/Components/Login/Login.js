@@ -120,7 +120,7 @@ const Login = () => {
         </form>
 
         <button onClick={() => signInWithGoogle()} className="btn form-btn">
-          <i class="fa-brands fa-google"></i> Sign In with Google
+          <i className="fa-brands fa-google"></i> Sign In with Google
         </button>
       </div>
     </div>

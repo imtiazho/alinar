@@ -60,10 +60,7 @@ const NavBar = () => {
   if (loading) {
     return <Spinner />;
   }
-  if (error) {
-    console.log(error);
-  }
-  console.log(user)
+
   return (
     <div className="main-nav">
       <UpperNav />

@@ -28,14 +28,13 @@ const CartItem = ({ item }) => {
     removeFromLocalStorage(id);
   };
 
-  console.log(item);
   return (
     <div className="item">
       <img src={img} alt="" />
 
       <div className="cart-info">
         <p>{name.length > 12 ? name.slice(0, 12) + "..." : name}</p>
-        <h4>$ {priceSet}</h4>
+        <h4>৳ {priceSet}</h4>
         <p>
           <small>Quantity : {quantity} pis</small>
         </p>
@@ -43,7 +42,7 @@ const CartItem = ({ item }) => {
 
       <div className="delete-btn">
         <button onClick={() => removeOneFromLocalStorage(_id)}>
-          <i class="fa-solid fa-trash-can"></i>
+          <i className="fa-solid fa-trash-can"></i>
         </button>
       </div>
     </div>

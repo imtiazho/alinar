@@ -17,12 +17,12 @@ const About = () => {
             <div className='social-media'>
                 <h2>Follow us on</h2>
                 <div className='social-icon'>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i className="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
-            <Link className='about-btn' to='/shop'>SHOP NOW <i class="fa-solid fa-arrow-right-long"></i></Link>
+            <Link className='about-btn' to='/shop'>SHOP NOW <i className="fa-solid fa-arrow-right-long"></i></Link>
         </div>
     );
 };
