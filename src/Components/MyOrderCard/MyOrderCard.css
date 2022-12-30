@@ -1,0 +1,24 @@
+.my-order .order-preview {
+  border: none;
+  padding: 0;
+  gap: 1rem;
+}
+
+.my-order .order-preview .each-row {
+  gap: 2rem;
+}
+
+span.my-order-divider {
+  border: 1px solid #2b2b2b;
+  display: block;
+}
+
+span.img-row img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+span.img-row {
+  display: flex;
+  gap: 1rem;
+}

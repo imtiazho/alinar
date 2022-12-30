@@ -25,6 +25,8 @@ import BlogPage from "./Components/BlogPage/BlogPage";
 import Spinner from "./Components/Spinner/Spinner";
 import TermsAndPrivacy from "./Components/TermsAndPrivacy/TermsAndPrivacy";
 import RequireAuth from "./RequireAuth/RequireAuth";
+import UserProfile from "./Components/UserProfile/UserProfile";
+import MyOrders from "./Components/MyOrders/MyOrders";
 
 export const CartContext = createContext();
 
@@ -82,6 +84,13 @@ function App() {
             <ConfirmOrder />
           </RequireAuth>
         }></Route>
+        <Route path="/userprofile" element={
+          <RequireAuth>
+            <UserProfile />
+          </RequireAuth>
+        }>
+          <Route index element={<MyOrders />}></Route>
+        </Route>
         <Route path="/blogDetails" element={<BlogDetails />}></Route>
         <Route path="/termsAndPrivacy" element={<TermsAndPrivacy />}></Route>
       </Routes>

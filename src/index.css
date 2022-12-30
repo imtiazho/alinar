@@ -16,7 +16,7 @@ a {
 body {
   background: #000;
   color: #fff;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +26,7 @@ img {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 

@@ -1,120 +1,165 @@
 .main-nav {
-    box-shadow: 0 0 16px rgb(0 0 0 / 15%);
+  box-shadow: 0 0 16px rgb(0 0 0 / 15%);
 }
 
 .nav-container {
-    width: 80%;
-    margin: 0 auto;
-    position: relative;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .nav-container,
 .nav-items,
 .log-cart,
 .log-cart li {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .nav-container {
-    justify-content: space-between;
-    height: 5rem;
-    gap: 5rem;
+  justify-content: space-between;
+  height: 5rem;
+  gap: 5rem;
 }
 
 .menu-log-cart {
-    display: flex;
-    align-items: center;
-    gap: 5rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
 }
 
 .nav-container img {
-    width: 180px;
+  width: 180px;
 }
 
 .nav-items {
-    gap: 4rem;
+  gap: 4rem;
 }
 
 .log-cart {
-    gap: 1rem;
-    align-items: center;
+  gap: 1rem;
+  align-items: center;
 }
 
 .log-cart .cart-icon,
 .log-cart .login-icon {
-    width: 35px;
-    height: 35px;
-    justify-content: center;
-    background-color: #EEBF0E;
+  width: 35px;
+  height: 35px;
+  justify-content: center;
+  background-color: #eebf0e;
 }
 
 .log-cart li a {
-    font-size: 17px;
-    color: #000;
+  font-size: 17px;
+  color: #000;
 }
 
 .cart-icon {
-    position: relative;
+  position: relative;
 }
 
 .cart-length {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: red;
-    color: #fff;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 13px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 13px;
 }
 
 li.user-icon {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-left: 1rem;
-    border: 2px solid #EEBF0E;
-    cursor: pointer;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 1rem;
+  border: 2px solid #eebf0e;
+  cursor: pointer;
 }
 
 .user-settings {
-    position: absolute;
-    background-color: #00000047;
-    color: #000;
-    top: 106%;
-    right: 0rem;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    border: 1px solid #EEBF0E;
+  position: absolute;
+  max-width: 350px;
+  width: 90%;
+  background-color: #fff;
+  color: #000;
+  top: 106%;
+  right: 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 4px;
 }
 
-.user-settings p,
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.user-profile p {
+  margin-bottom: -5px;
+  font-weight: 500;
+  color: #626262;
+  cursor: pointer;
+}
+
+.user-profile p a {
+  font-size: 12px;
+  color: #1876f2;
+}
+
+.setting-menu-inner {
+  padding: 20px;
+}
+
+.user-settings hr {
+  border: none;
+  height: 1px;
+  background: #9a9a9a;
+  margin: 15px 0;
+}
+
 .user-settings button {
-    background-color: #EEBF0E;
-    padding: 10px;
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 16px;
+  color: #626262;
 }
 
-.user-settings p:hover,
-.user-settings button:hover {
-    background-color: #d1a910;
+.setting-links span img {
+  width: 50px;
 }
 
-.signout-btn {
-    font-size: 15px;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
+.setting-links span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+img.arrow {
+  width: 15px;
 }
 
 .responsive-navBar {
-    display: none;
+  display: none;
 }

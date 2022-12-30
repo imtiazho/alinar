@@ -13,6 +13,8 @@ import { toast } from "react-hot-toast";
 import { CartContext } from "../../../App";
 import { getStoredCart } from "../../../LocalStorage/ManageLocalStorage";
 import Spinner from "../../Spinner/Spinner";
+import logout from '../../../assets/logout.png';
+import arrow from '../../../assets/arrow.png'
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -88,15 +90,23 @@ const NavBar = () => {
 
                 {userSettingOpen && (
                   <div className="user-settings">
-                    <p>
-                      <Link>
-                        {user.displayName ? user.displayName : "Anonymous User"}
-                      </Link>
-                    </p>
-                    <p>Dhaka BanglaDesh</p>
-                    <button onClick={handleSignOut} className="signout-btn">
-                      Sign Out
-                    </button>
+                    <div className="setting-menu-inner">
+                      <div className="user-profile">
+                        <div>
+                          <p>{user.displayName ? user.displayName : 'Anonymous User'}</p>
+                          <p><Link onClick={() => setuserSettingOpen(!userSettingOpen)} to='/userprofile'>See your Profile</Link></p>
+                        </div>
+                      </div>
+                      <hr />
+
+                      <button onClick={handleSignOut} className="setting-links">
+                        <span>
+                          <img src={logout} alt="" />
+                          Logout
+                        </span>
+                        <img className="arrow" src={arrow} alt="" />
+                      </button>
+                    </div>
                   </div>
                 )}
               </li>

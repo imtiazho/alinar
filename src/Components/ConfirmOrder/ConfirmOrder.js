@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../App";
 import auth from "../../Firebase/Firebase.init";
 import {
@@ -11,21 +12,22 @@ import {
 import "./ConfirmOrder.css";
 
 const ConfirmOrder = () => {
+  const navigate = useNavigate();
   const { cartState, shippingInfoState } = useContext(CartContext);
   const [shippingInfoToFinal, setShippingInfoToFinal] = shippingInfoState;
   const storedCart = getStoredCart();
   const { productPrice, deliveryCharge, productQuantity, totalPrice } =
     getCalculation();
 
-  let productName = "";
-  let productStatus = "";
-  let productType = "";
-  let productImg = "";
+  let productName = [];
+  let productStatus = [];
+  let productType = [];
+  let productImg = [];
   for (const item of storedCart) {
-    productName = productName + ", " + item.name;
-    productStatus = productStatus + ", " + item.shareStatusToCart;
-    productType = productType + ", " + item.typeOfProduct;
-    productImg = productImg + ", " + item.img;
+    productName.push(item.name);
+    productStatus.push(item.shareStatusToCart)
+    productType.push(item.typeOfProduct)
+    productImg.push(item.img)
   }
 
   const handleConfirmOrder = () => {
@@ -36,10 +38,11 @@ const ConfirmOrder = () => {
       clientDistrict: shippingInfoToFinal?.district,
       clientThana: shippingInfoToFinal?.thana,
       clientVillage: shippingInfoToFinal?.village,
-      productName: [productName],
-      productImg: [productImg],
+      productName: productName,
+      productImg: productImg,
       productStatus: productStatus,
       productPrice: productPrice,
+      productType: productType,
       deliveryCharge: deliveryCharge,
       productQuantity: productQuantity,
       totalPrice: totalPrice,
@@ -58,6 +61,7 @@ const ConfirmOrder = () => {
           if (data.acknowledged === true) {
             deleteShoppingCart();
             toast.success('Order done is done!')
+            navigate('/')
           }
         });
     }

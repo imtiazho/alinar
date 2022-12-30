@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../App";
+import auth from "../../Firebase/Firebase.init";
 import { getStoredCart } from "../../LocalStorage/ManageLocalStorage";
 import "./ShipingInfo.css";
 
 const ShipingInfo = () => {
+  const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   const storedCart = getStoredCart();
   const { cartState, shippingInfoState } = useContext(CartContext);
@@ -13,7 +16,7 @@ const ShipingInfo = () => {
 
   const [shippingInfo, setShippingInfo] = useState({
     name: "",
-    email: "",
+    email: user.email,
     district: "",
     thana: "",
     village: "",
@@ -38,21 +41,6 @@ const ShipingInfo = () => {
         nameError: "Name is required",
       });
       setShippingInfo({ ...shippingInfo, name: "" });
-    }
-  };
-
-  const handleEmail = (e) => {
-    const emailRegEx = /\S+@\S+\.\S+/;
-    const validEmail = emailRegEx.test(e.target.value);
-    if (validEmail) {
-      setShippingInfo({ ...shippingInfo, email: e.target.value });
-      setErrors({ ...errors, emailError: "" });
-    } else {
-      setErrors({
-        ...errors,
-        emailError: "Enter a valid email",
-      });
-      setShippingInfo({ ...shippingInfo, email: "" });
     }
   };
 
@@ -150,7 +138,7 @@ const ShipingInfo = () => {
       toast.success('Saved Your Infomation')
     }
   };
-  console.log(shippingInfoToFinal);
+
   return (
     <div className="shipping">
       <div className="form-container">
@@ -166,7 +154,7 @@ const ShipingInfo = () => {
 
           <div>
             <div className="input-field">
-              <input onBlur={handleEmail} type="email" placeholder="Email" />
+              <input readOnly type="email" value={user.email} />
             </div>
             {errors.emailError && (
               <p className="error-message">{errors.emailError}</p>
