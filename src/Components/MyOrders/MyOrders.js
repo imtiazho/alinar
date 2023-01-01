@@ -13,8 +13,8 @@ const MyOrders = () => {
         isLoading,
         error,
         data,
-    } = useQuery("ordersData", () =>
-        fetch(`http://localhost:5000/orders?clientEmail=${user.email}`).then((res) => res.json())
+    } = useQuery("myOrdersData", () =>
+        fetch(`http://localhost:5000/orders?email=${user.email}`).then((res) => res.json())
     );
 
     if (isLoading) {

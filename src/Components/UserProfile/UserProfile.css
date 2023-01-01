@@ -60,3 +60,6 @@
 .right-side .items-short-nav {
   margin: 0rem auto;
 }
+#dash-board .container .left-side .profile img {
+  width: 60%;
+}

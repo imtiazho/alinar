@@ -27,6 +27,8 @@ import TermsAndPrivacy from "./Components/TermsAndPrivacy/TermsAndPrivacy";
 import RequireAuth from "./RequireAuth/RequireAuth";
 import UserProfile from "./Components/UserProfile/UserProfile";
 import MyOrders from "./Components/MyOrders/MyOrders";
+import AllOrders from "./Components/AllOrders/AllOrders";
+import AllUsers from "./Components/AllUsers/AllUsers";
 
 export const CartContext = createContext();
 
@@ -90,6 +92,8 @@ function App() {
           </RequireAuth>
         }>
           <Route index element={<MyOrders />}></Route>
+          <Route path="allOrders" element={<AllOrders />}></Route>
+          <Route path="allUsers" element={<AllUsers />}></Route>
         </Route>
         <Route path="/blogDetails" element={<BlogDetails />}></Route>
         <Route path="/termsAndPrivacy" element={<TermsAndPrivacy />}></Route>

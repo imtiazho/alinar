@@ -4,6 +4,7 @@ import "./SignUp.css";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { toast } from "react-hot-toast";
@@ -14,6 +15,7 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
@@ -75,35 +77,27 @@ const SignUp = () => {
     }
   };
 
-  const handleForm = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault();
     if (userInfo.password === userInfo.confirmPassword) {
-      createUserWithEmailAndPassword(userInfo.email, userInfo.password, userInfo.name);
+      await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+      await updateProfile({ displayName: userInfo.name })
     }
   };
 
   useEffect(() => {
-    if (hookLoading || googleLoading) {
+    if (hookLoading || googleLoading || updating) {
       return <Spinner />
     }
-  }, [hookLoading, googleLoading]);
+  }, [hookLoading, googleLoading, updating]);
+  console.log(hookUser)
 
-  useEffect(() => {
-    if (hookUser || googleUser) {
-      toast.success("Signup successfully!");
-      navigate("/");
-    }
-  }, [hookUser, googleUser, navigate]);
   useEffect(() => {
     if (hookUser || googleUser) {
       toast.success("Signup successfully!");
       navigate(from, { replace: true });
     }
-  }, [hookUser, googleUser, navigate]);
-
-  useEffect(() => {
-    const dbError = hookError || googleError;
-  }, [hookError, googleError]);
+  }, [hookUser, googleUser, navigate, from]);
 
   return (
     <div className="form signup-form">

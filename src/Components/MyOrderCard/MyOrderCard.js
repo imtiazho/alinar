@@ -18,6 +18,8 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne }) => {
     deliveryCharge,
     productQuantity,
     totalPrice,
+    orderAccepted,
+    role,
   } = eachOrder;
 
   return (
@@ -72,12 +74,27 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne }) => {
         </span>
       </div>
 
-      <button
+      {orderAccepted || <button
         onClick={() => handleDeleteOne(_id)}
         className="confirm-order-btn"
       >
         Cancel Order
-      </button>
+      </button>}
+
+      {role === "admin" && <div className="button-grp">
+        <button
+          className="confirm-order-btn"
+        >
+          Accept Order
+        </button>
+
+        <button
+          onClick={() => handleDeleteOne(_id)}
+          className="confirm-order-btn"
+        >
+          Delete This Order
+        </button>
+      </div>}
 
       <span className="my-order-divider"></span>
     </div>

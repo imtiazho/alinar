@@ -85,13 +85,14 @@ const NavBar = () => {
             </li>
 
             {user ? (
-              <li className="user-icon">
-                <img onClick={() => setuserSettingOpen(!userSettingOpen)} src={`${user.photoURL ? user.photoURL : anonymousUser}`} alt="" />
+              <li onClick={() => setuserSettingOpen(!userSettingOpen)} className="user-icon">
+                <img src={user.photoURL ? user.photoURL : anonymousUser} alt="" />
 
                 {userSettingOpen && (
                   <div className="user-settings">
                     <div className="setting-menu-inner">
                       <div className="user-profile">
+                        <img src={user.photoURL ? user.photoURL : anonymousUser} alt="" />
                         <div>
                           <p>{user.displayName ? user.displayName : 'Anonymous User'}</p>
                           <p><Link onClick={() => setuserSettingOpen(!userSettingOpen)} to='/userprofile'>See your Profile</Link></p>
