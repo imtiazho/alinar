@@ -59,5 +59,8 @@
   margin: 0rem auto;
 }
 #dash-board .container .left-side .profile img {
-  width: 60%;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  object-fit: cover;
 }

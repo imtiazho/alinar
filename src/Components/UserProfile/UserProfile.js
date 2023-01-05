@@ -7,9 +7,11 @@ import { Link, Outlet } from 'react-router-dom';
 import CustomLink from '../CustomLink/CustomLink';
 import Spinner from '../Spinner/Spinner';
 import { useQuery } from 'react-query';
+import useAdmin from '../../Hooks/useAdmin';
 
 const UserProfile = () => {
     const [user, loading, error] = useAuthState(auth);
+    const [admin, setAdmin] = useAdmin(user);
     const {
         isLoading,
         userError,
@@ -17,9 +19,11 @@ const UserProfile = () => {
     } = useQuery("user", () =>
         fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then((res) => res.json())
     );
+
     if (loading) {
         <Spinner />
     }
+
     return (
         <div>
             <div id="dash-board">
@@ -27,7 +31,7 @@ const UserProfile = () => {
                     <div className="left-side">
                         <div className="profile">
                             <img src={data?.userImage || anonymousUser} alt="" />
-                            <p>{user.displayName} <small>(user)</small></p>
+                            <p>{user.displayName} <small>({data?.role ? data.role : "user"})</small></p>
                             <div className='edit-profile'>
                                 <Link to='/editProfile'><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Photo</Link>
                             </div>
@@ -37,9 +41,9 @@ const UserProfile = () => {
 
                     <div className="right-side">
                         <div className="items-short-nav">
-                            <CustomLink to="">My Orders</CustomLink>
-                            <CustomLink to="allOrders">All Orders</CustomLink>
-                            <CustomLink to="allUsers">All Users</CustomLink>
+                            {admin || <CustomLink to="">My Orders</CustomLink>}
+                            {admin && <CustomLink to="allOrders">All Orders</CustomLink>}
+                            {admin && <CustomLink to="allUsers">All Users</CustomLink>}
                         </div>
                         <div className="listing-on-rent">
                             <Outlet />
