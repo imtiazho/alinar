@@ -15,7 +15,7 @@ const ShipingInfo = () => {
   const [shippingInfoToFinal, setShippingInfoToFinal] = shippingInfoState;
 
   const [shippingInfo, setShippingInfo] = useState({
-    name: "",
+    name: user.displayName,
     email: user.email,
     district: "",
     thana: "",
@@ -30,19 +30,6 @@ const ShipingInfo = () => {
     villageError: "",
     phoneError: "",
   });
-
-  const handleName = (e) => {
-    if (e.target.value) {
-      setShippingInfo({ ...shippingInfo, name: e.target.value });
-      setErrors({ ...errors, nameError: "" });
-    } else {
-      setErrors({
-        ...errors,
-        nameError: "Name is required",
-      });
-      setShippingInfo({ ...shippingInfo, name: "" });
-    }
-  };
 
   const handleDistrict = (e) => {
     if (e.target.value) {
@@ -145,7 +132,7 @@ const ShipingInfo = () => {
         <form onSubmit={handleShippingForm}>
           <div>
             <div className="input-field">
-              <input onBlur={handleName} type="text" placeholder="Name" />
+              <input readOnly value={user.displayName} type="text" placeholder="Name" />
             </div>
             {errors.nameError && (
               <p className="error-message">{errors.nameError}</p>

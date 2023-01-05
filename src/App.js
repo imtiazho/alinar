@@ -29,6 +29,8 @@ import UserProfile from "./Components/UserProfile/UserProfile";
 import MyOrders from "./Components/MyOrders/MyOrders";
 import AllOrders from "./Components/AllOrders/AllOrders";
 import AllUsers from "./Components/AllUsers/AllUsers";
+import Imgbb from "./Components/Imgbb/Imgbb";
+import EditProfile from "./Components/EditProfile/EditProfile";
 
 export const CartContext = createContext();
 
@@ -76,6 +78,8 @@ function App() {
         <Route path="/shop" element={<Shop />}></Route>
         <Route path="/blogs" element={<BlogPage />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/editProfile" element={<EditProfile />}></Route>
+        <Route path="/img" element={<Imgbb />}></Route>
         <Route path="/shipping" element={
           <RequireAuth>
             <ShipingInfo />

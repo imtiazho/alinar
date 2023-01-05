@@ -261,13 +261,6 @@ const ProductDetailsCard = ({ data }) => {
             <button onClick={() => haandleAddToCart(data)} className="btn">
               Add to Cart <i className="fa-solid fa-cart-shopping"></i>
             </button>
-            {/* {cart.length > 0 && (
-              <p>
-                {" "}
-                <span className="red-span">*</span>প্রোডাক্টের কোয়ান্টিটি
-                বাড়াতে আবার ক্লিক করুন
-              </p>
-            )} */}
           </div>
         </div>
       </div>

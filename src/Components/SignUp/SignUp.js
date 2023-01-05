@@ -79,18 +79,25 @@ const SignUp = () => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    if (userInfo.password === userInfo.confirmPassword) {
+
+    if (userInfo.name || userInfo.password || userInfo.confirmPassword || userInfo.email) {
       await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
-      await updateProfile({ displayName: userInfo.name })
+      await updateProfile({ displayName: userInfo.name });
+      fetch(`http://localhost:5000/user/${userInfo.email}`, {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({ userName: userInfo.name, userPassWord: userInfo.password, userEmail: userInfo.email })
+      })
+        .then(res => res.json())
+        .then(result => {
+          console.log(result);
+        })
+    } else {
+      setErrors({ nameError: "Name is required.", emailError: "Enter a valid Email", passwordError: "Password must be 6 character", confirmPasswordError: "Password Mismatch", imageError: "Image is required." })
     }
   };
-
-  useEffect(() => {
-    if (hookLoading || googleLoading || updating) {
-      return <Spinner />
-    }
-  }, [hookLoading, googleLoading, updating]);
-  console.log(hookUser)
 
   useEffect(() => {
     if (hookUser || googleUser) {
@@ -98,6 +105,10 @@ const SignUp = () => {
       navigate(from, { replace: true });
     }
   }, [hookUser, googleUser, navigate, from]);
+
+  if (hookLoading || googleLoading || updating) {
+    return <Spinner />
+  }
 
   return (
     <div className="form signup-form">

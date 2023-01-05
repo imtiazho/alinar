@@ -15,6 +15,7 @@ import { getStoredCart } from "../../../LocalStorage/ManageLocalStorage";
 import Spinner from "../../Spinner/Spinner";
 import logout from '../../../assets/logout.png';
 import arrow from '../../../assets/arrow.png'
+import { useQuery } from "react-query";
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -24,6 +25,13 @@ const NavBar = () => {
   const { cartState, shippingInfoState } = useContext(CartContext);
   const [cart, setCart] = cartState;
   const storedCart = getStoredCart();
+  const {
+    isLoading,
+    userError,
+    data,
+  } = useQuery("user", () =>
+    fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then((res) => res.json())
+  );
 
   const menuItems = (
     <>
@@ -41,7 +49,6 @@ const NavBar = () => {
       </li>
     </>
   );
-
   const handleSignOut = () => {
     signOut(auth);
     navigate("/login");
@@ -59,7 +66,7 @@ const NavBar = () => {
     quantityFromStoredCart = quantityFromStoredCart + item.quantity;
   }
 
-  if (loading) {
+  if (loading || isLoading) {
     return <Spinner />;
   }
 
@@ -86,13 +93,13 @@ const NavBar = () => {
 
             {user ? (
               <li onClick={() => setuserSettingOpen(!userSettingOpen)} className="user-icon">
-                <img src={user.photoURL ? user.photoURL : anonymousUser} alt="" />
+                <img src={data ? data.userImage : anonymousUser} alt="" />
 
                 {userSettingOpen && (
                   <div className="user-settings">
                     <div className="setting-menu-inner">
                       <div className="user-profile">
-                        <img src={user.photoURL ? user.photoURL : anonymousUser} alt="" />
+                        <img src={data?.userImage || anonymousUser} alt="" />
                         <div>
                           <p>{user.displayName ? user.displayName : 'Anonymous User'}</p>
                           <p><Link onClick={() => setuserSettingOpen(!userSettingOpen)} to='/userprofile'>See your Profile</Link></p>
