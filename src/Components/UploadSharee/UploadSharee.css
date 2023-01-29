@@ -1,0 +1,14 @@
+input#upload-photo {
+  display: none;
+}
+#upload-photo-label {
+  width: 100%;
+  padding: 17px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  color: #a8a8a8;
+  display: flex;
+
+  text-align: center;
+}

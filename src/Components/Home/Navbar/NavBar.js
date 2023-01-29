@@ -16,6 +16,7 @@ import Spinner from "../../Spinner/Spinner";
 import logout from '../../../assets/logout.png';
 import arrow from '../../../assets/arrow.png'
 import { useQuery } from "react-query";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -25,6 +26,7 @@ const NavBar = () => {
   const { cartState, shippingInfoState } = useContext(CartContext);
   const [cart, setCart] = cartState;
   const storedCart = getStoredCart();
+  const [admin, setAdmin] = useAdmin(user);
   const {
     isLoading,
     userError,
@@ -44,9 +46,15 @@ const NavBar = () => {
       <li>
         <Link to="/blogs">Blog</Link>
       </li>
-      <li>
-        <Link to="/about">About Us</Link>
-      </li>
+      {admin === true ?
+        <li>
+          <Link to="/manageProduct">Manage Product</Link>
+        </li>
+        :
+        <li>
+          <Link to="/about">About Us</Link>
+        </li>
+      }
     </>
   );
   const handleSignOut = () => {
@@ -66,9 +74,9 @@ const NavBar = () => {
     quantityFromStoredCart = quantityFromStoredCart + item.quantity;
   }
 
-  if (loading || isLoading) {
-    return <Spinner />;
-  }
+  // if (loading || isLoading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <div className="main-nav">

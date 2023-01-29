@@ -1,0 +1,15 @@
+.manage-product-card {
+  border: 1px solid #232323;
+  padding: 10px;
+}
+.manage-product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.manage-product-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}

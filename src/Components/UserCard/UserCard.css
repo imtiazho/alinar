@@ -5,28 +5,32 @@
   border-bottom: 2px dashed #232323;
   padding: 15px;
 }
+
 .user-card img {
   width: 70px;
   height: 70px;
   object-fit: cover;
   border-radius: 50%;
 }
+
 .btn-grp {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
 .btn-grp button {
   padding: 10px;
-  background: #eebf0e;
   cursor: pointer;
   font-size: 13px;
   border-radius: 25px;
-  font-weight: 600;
+  font-weight: 500;
 }
+
 .btn-grp .terminate-btn {
   background-color: red;
 }
+
 .admin-sign {
   padding: 6px 15px;
   border-radius: 25px;

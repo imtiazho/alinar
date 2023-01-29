@@ -31,6 +31,11 @@ import AllOrders from "./Components/AllOrders/AllOrders";
 import AllUsers from "./Components/AllUsers/AllUsers";
 import Imgbb from "./Components/Imgbb/Imgbb";
 import EditProfile from "./Components/EditProfile/EditProfile";
+import ManageProduct from "./Components/ManageProduct/ManageProduct";
+import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
+import UploadSharee from "./Components/UploadSharee/UploadSharee";
+import UploadThreePis from "./Components/UploadThreePis/UploadThreePis";
+import UploadAbaya from "./Components/UploadAbaya/UploadAbaya";
 
 export const CartContext = createContext();
 
@@ -101,6 +106,20 @@ function App() {
         </Route>
         <Route path="/blogDetails" element={<BlogDetails />}></Route>
         <Route path="/termsAndPrivacy" element={<TermsAndPrivacy />}></Route>
+        <Route path="/manageProduct" element={
+          <RequireAuth>
+            <ManageProduct />
+          </RequireAuth>
+        }></Route>
+        <Route path="/addProduct" element={
+          <RequireAuth>
+            <AddNewProduct />
+          </RequireAuth>
+        }>
+          <Route index element={<UploadSharee />}></Route>
+          <Route path="uploadthreepis" element={<UploadThreePis />}></Route>
+          <Route path="uploadabaya" element={<UploadAbaya />}></Route>
+        </Route>
       </Routes>
       <Footer />
       <Toaster />
