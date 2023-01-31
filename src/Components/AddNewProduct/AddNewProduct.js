@@ -14,6 +14,7 @@ const AddNewProduct = () => {
                 {admin && <CustomLink to="">Sharee</CustomLink>}
                 {admin && <CustomLink to="uploadthreepis">Three Pis</CustomLink>}
                 {admin && <CustomLink to="uploadabaya">Abaya</CustomLink>}
+                {/* {admin && <CustomLink to="bestSelling">Best Selling</CustomLink>} */}
             </div>
             <div className="listing-on-rent">
                 <Outlet />

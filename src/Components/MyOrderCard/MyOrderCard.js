@@ -1,7 +1,13 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/Firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 import "./MyOrderCard.css";
 
-const MyOrderCard = ({ eachOrder, handleDeleteOne }) => {
+const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder }) => {
+  const [user, loading, UserError] = useAuthState(auth);
+  const [admin, setAdmin] = useAdmin(user);
+
   const {
     _id,
     clientName,
@@ -19,7 +25,7 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne }) => {
     productQuantity,
     totalPrice,
     orderAccepted,
-    role,
+    orderStatus,
   } = eachOrder;
 
   return (
@@ -74,19 +80,28 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne }) => {
         </span>
       </div>
 
-      {orderAccepted || <button
+      {/* {orderStatus || <button
         onClick={() => handleDeleteOne(_id)}
         className="confirm-order-btn"
       >
         Cancel Order
-      </button>}
-
-      {role === "admin" && <div className="button-grp">
+      </button>} */}
+      {orderStatus ?
+        <p className="confirm-text">✓ This order is accepted by Authority</p> :
         <button
+          onClick={() => handleDeleteOne(_id)}
+          className="confirm-order-btn"
+        >
+          Cancel Order
+        </button>}
+
+      {admin && <div className="button-grp">
+        {orderStatus || <button
+          onClick={() => handleConfirmOrder(_id)}
           className="confirm-order-btn"
         >
           Accept Order
-        </button>
+        </button>}
 
         <button
           onClick={() => handleDeleteOne(_id)}

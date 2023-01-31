@@ -1,7 +1,7 @@
 import React from 'react';
 import './ManageProductCard.css';
 
-const ManageProductCard = ({ product }) => {
+const ManageProductCard = ({ product, deleteProduct }) => {
     const {
         _id,
         handCodedId,
@@ -32,7 +32,7 @@ const ManageProductCard = ({ product }) => {
         <div className='manage-product-card'>
             <img src={img} alt="" />
             <p>{name}</p>
-            <button className='btn'>Delete</button>
+            <button onClick={() => deleteProduct(_id)} className='btn'>Delete</button>
         </div>
     );
 };

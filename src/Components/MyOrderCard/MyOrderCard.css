@@ -26,4 +26,11 @@ span.img-row {
 
 .button-grp {
   display: flex;
+  width: 50%;
+  /* margin: -3rem auto 2rem auto; */
+}
+
+p.confirm-text {
+  margin: 2rem 0;
+  color: #06b20a;
 }

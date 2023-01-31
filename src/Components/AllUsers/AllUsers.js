@@ -16,10 +16,19 @@ const AllUsers = () => {
     if (isLoading) {
         return <Spinner />;
     }
+
+    const handleMakeModerator = (id) => {
+        console.log("Moderator Zone", id);
+    }
+
+    const handleTerminateUser = (id) => {
+        console.log("Terminate User", id);
+    }
+
     return (
         <div className='all-users'>
             {
-                users.map(user => <UserCard key={user._id} user={user} />)
+                users.map(user => <UserCard handleMakeModerator={handleMakeModerator} handleTerminateUser={handleTerminateUser} key={user._id} user={user} />)
             }
         </div>
     );

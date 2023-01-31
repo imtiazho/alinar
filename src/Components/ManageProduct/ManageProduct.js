@@ -16,10 +16,15 @@ const ManageProduct = () => {
     if (isLoading) {
         return <Spinner />;
     }
+
+    const deleteProduct = (id) => {
+        console.log('Delete Targeted Product', id)
+    }
+
     return (
         <div className='manage-product'>
             <Link to='/addProduct' className='place-order-btn'>+ Add New Product</Link>
-            {data?.map(product => <ManageProductCard product={product} key={product._id} />)}
+            {data?.map(product => <ManageProductCard deleteProduct={deleteProduct} product={product} key={product._id} />)}
         </div>
     );
 };
