@@ -50,9 +50,7 @@ const UploadThreePis = () => {
     }
 
     const handleImage = (e) => {
-        setImageFile(e.target.files[0])
-        console.log(uploadProductInfo)
-
+        setImageFile(e.target.files[0]);
     }
 
     const handleProductType = (e) => {

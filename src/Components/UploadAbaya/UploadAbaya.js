@@ -1,102 +1,230 @@
-import React from 'react';
-import './UploadAbaya.css'
-
-const abayaForUpload = {
-    handCodedId: "abaya",
-    name: "Kaftan Abaya",
-    priceSet: 1220,
-    stock: "Available",
-    ratings: 5,
-    img: "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg",
-    deliveryInDhaka: 80,
-    deliveryOutDhaka: 110,
-    typeOfProduct: "ABAYA",
-    shortDesc: "Double Jorjet and Inner part American Crap.",
-    Long: 45,
-    body: "Free Size",
-    colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
-    quantity: 0,
-    priceJustSharee: null,
-    pantMaterial: null,
-    brand: null,
-    dupattaMaterial: null,
-    category: null,
-    productMaterial: null,
-    shareeLong: null,
-    panjabiSize: null,
-    note: null
-}
+import React, { useState } from 'react';
+import './UploadAbaya.css';
 
 const UploadAbaya = () => {
+    const [imageFile, setImageFile] = useState("");
+    const [uploadProductInfo, setUploadProductInfo] = useState({
+        name: "",
+        shareStePrice: "",
+        image: "",
+        productType: "",
+        shortDesc: "",
+        Long: "",
+        size: "",
+        productMaterial: "",
+        pantMaterial: "",
+        dupattaMaterial: "",
+        category: "",
+        brand: "",
+    });
+
+    const [uploadProductErrors, setUploadProductErrors] = useState({
+        nameError: "",
+        shareStePriceError: "",
+        imageError: "",
+        productTypeError: "",
+        shortDescError: "",
+        LongError: "",
+        sizeError: "",
+        productMaterialError: "",
+        pantMaterialError: "",
+        dupattaMaterialError: "",
+        categoryError: "",
+        brandError: "",
+    });
+
+    const handleName = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, name: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, nameError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, nameError: 'Name is required' });
+            setUploadProductInfo({ ...uploadProductInfo, name: "" });
+        }
+    }
+
+    const handleSetPrice = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, shareStePrice: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, shareStePriceError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, shareStePriceError: 'set price' });
+            setUploadProductInfo({ ...uploadProductInfo, shareStePrice: "" });
+        }
+    }
+
+    const handleImage = (e) => {
+        setImageFile(e.target.files[0]);
+    }
+
+    const handleProductType = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, productType: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, productTypeError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, productTypeError: 'Type' });
+            setUploadProductInfo({ ...uploadProductInfo, productType: "" });
+        }
+    }
+
+    const handleDetails = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, shortDesc: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, shortDescError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, shortDescError: 'short decs' });
+            setUploadProductInfo({ ...uploadProductInfo, shortDesc: "" });
+        }
+    }
+
+    const handleAbayaLong = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, Long: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, LongError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, LongError: 'long' });
+            setUploadProductInfo({ ...uploadProductInfo, Long: "" });
+        }
+    }
+
+    const handleAbayaSize = (e) => {
+        if (e.target.value) {
+            setUploadProductInfo({ ...uploadProductInfo, size: e.target.value });
+            setUploadProductErrors({ ...uploadProductErrors, sizeError: '' });
+        }
+        else {
+            setUploadProductErrors({ ...uploadProductErrors, sizeError: 'size' });
+            setUploadProductInfo({ ...uploadProductInfo, size: "" });
+        }
+    }
+
+    const handleUploadAbayaForm = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append('image', imageFile);
+        fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    fetch("http://localhost:5000/allProducts", {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            handCodedId: "abaya",
+                            name: uploadProductInfo.name,
+                            priceSet: uploadProductInfo.shareStePrice,
+                            stock: "Available",
+                            ratings: 5,
+                            img: data.data.url,
+                            deliveryInDhaka: 80,
+                            deliveryOutDhaka: 110,
+                            typeOfProduct: uploadProductInfo.productType,
+                            shortDesc: uploadProductInfo.shortDesc,
+                            Long: uploadProductInfo.Long,
+                            body: uploadProductInfo.size,
+                            colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+                            quantity: 0,
+                            priceJustSharee: null,
+                            pantMaterial: null,
+                            brand: null,
+                            dupattaMaterial: null,
+                            category: null,
+                            productMaterial: null,
+                            shareeLong: null,
+                            panjabiSize: null,
+                            note: null
+                        })
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result);
+                        })
+                }
+            });
+
+    }
+
     return (
         <div className="shipping">
             <div className="form-container">
-                <form>
+                <form onSubmit={handleUploadAbayaForm}>
                     <div>
                         <p className='form-title-upload'>Upload Abaya</p>
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya name" />
+                            <input onBlur={handleName} type="text" placeholder="Abaya name" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.nameError && (
+                            <p className="error-message">{uploadProductErrors.nameError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya Price" />
+                            <input onBlur={handleSetPrice} type="text" placeholder="Abaya Price" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.shareStePriceError && (
+                            <p className="error-message">{uploadProductErrors.shareStePriceError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya Image" />
+                            <input onChange={handleImage} type="file" id='upload-photo' />
+                            <label id='upload-photo-label' htmlFor='upload-photo'>+ Add a Photo</label>
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.imageError && (
+                            <p className="error-message">{uploadProductErrors.imageError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Type of product" />
+                            <input onBlur={handleProductType} type="text" placeholder="Type of product" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.productTypeError && (
+                            <p className="error-message">{uploadProductErrors.productTypeError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya Details" />
+                            <input onBlur={handleDetails} type="text" placeholder="Abaya Details" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.shortDescError && (
+                            <p className="error-message">{uploadProductErrors.shortDescError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya Long" />
+                            <input onBlur={handleAbayaLong} type="text" placeholder="Abaya Long" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.LongError && (
+                            <p className="error-message">{uploadProductErrors.LongError}</p>
+                        )}
                     </div>
 
                     <div>
                         <div className="input-field">
-                            <input type="text" placeholder="Abaya Size" />
+                            <input onBlur={handleAbayaSize} type="text" placeholder="Abaya Size" />
                         </div>
-                        {/* {errors.nameError && (
-                            <p className="error-message">{errors.nameError}</p>
-                        )} */}
+                        {uploadProductErrors.sizeError && (
+                            <p className="error-message">{uploadProductErrors.sizeError}</p>
+                        )}
                     </div>
 
 
