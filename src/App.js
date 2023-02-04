@@ -104,7 +104,7 @@ function App() {
           <Route path="allOrders" element={<AllOrders />}></Route>
           <Route path="allUsers" element={<AllUsers />}></Route>
         </Route>
-        <Route path="/blogDetails" element={<BlogDetails />}></Route>
+        <Route path="/blogDetails/:blogId" element={<BlogDetails />}></Route>
         <Route path="/termsAndPrivacy" element={<TermsAndPrivacy />}></Route>
         <Route path="/manageProduct" element={
           <RequireAuth>

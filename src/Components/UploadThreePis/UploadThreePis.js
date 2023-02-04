@@ -124,50 +124,74 @@ const UploadThreePis = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', imageFile);
-        fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    fetch("http://localhost:5000/allProducts", {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            handCodedId: "threePis",
-                            name: uploadProductInfo.name,
-                            priceSet: uploadProductInfo.shareStePrice,
-                            stock: "Available",
-                            ratings: 5,
-                            img: data.data.url,
-                            deliveryInDhaka: 80,
-                            deliveryOutDhaka: 110,
-                            typeOfProduct: uploadProductInfo.productType,
-                            productMaterial: uploadProductInfo.productMaterial,
-                            pantMaterial: uploadProductInfo.pantMaterial,
-                            dupattaMaterial: uploadProductInfo.dupattaMaterial,
-                            brand: uploadProductInfo.brand,
-                            category: uploadProductInfo.category,
-                            colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
-                            quantity: 0,
-                            shortDesc: null,
-                            Long: null,
-                            body: null,
-                            priceJustSharee: null,
-                            shareeLong: null,
-                            panjabiSize: null,
-                            note: null
+        if (uploadProductInfo.name &&
+            uploadProductInfo.shareStePrice &&
+            uploadProductInfo.image &&
+            uploadProductInfo.productType &&
+            uploadProductInfo.productMaterial &&
+            uploadProductInfo.pantMaterial &&
+            uploadProductInfo.dupattaMaterial &&
+            uploadProductInfo.category &&
+            uploadProductInfo.brand) {
+
+            fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fetch("http://localhost:5000/allProducts", {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                handCodedId: "threePis",
+                                name: uploadProductInfo.name,
+                                priceSet: uploadProductInfo.shareStePrice,
+                                stock: "Available",
+                                ratings: 5,
+                                img: data.data.url,
+                                deliveryInDhaka: 80,
+                                deliveryOutDhaka: 110,
+                                typeOfProduct: uploadProductInfo.productType,
+                                productMaterial: uploadProductInfo.productMaterial,
+                                pantMaterial: uploadProductInfo.pantMaterial,
+                                dupattaMaterial: uploadProductInfo.dupattaMaterial,
+                                brand: uploadProductInfo.brand,
+                                category: uploadProductInfo.category,
+                                colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+                                quantity: 0,
+                                shortDesc: null,
+                                Long: null,
+                                body: null,
+                                priceJustSharee: null,
+                                shareeLong: null,
+                                panjabiSize: null,
+                                note: null
+                            })
                         })
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
-                        })
-                }
-            });
+                            .then(res => res.json())
+                            .then(result => {
+                                console.log(result);
+                            })
+                    }
+                });
+        }
+        else {
+            setUploadProductErrors({
+                nameError: "Error",
+                shareStePriceError: "Error",
+                imageError: "Error",
+                productTypeError: "Error",
+                productMaterialError: "Error",
+                pantMaterialError: "Error",
+                dupattaMaterialError: "Error",
+                categoryError: "Error",
+                brandError: "Error"
+            })
+        }
     }
 
     return (

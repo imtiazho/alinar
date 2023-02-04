@@ -108,50 +108,62 @@ const UploadAbaya = () => {
 
         const formData = new FormData();
         formData.append('image', imageFile);
-        fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    fetch("http://localhost:5000/allProducts", {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            handCodedId: "abaya",
-                            name: uploadProductInfo.name,
-                            priceSet: uploadProductInfo.shareStePrice,
-                            stock: "Available",
-                            ratings: 5,
-                            img: data.data.url,
-                            deliveryInDhaka: 80,
-                            deliveryOutDhaka: 110,
-                            typeOfProduct: uploadProductInfo.productType,
-                            shortDesc: uploadProductInfo.shortDesc,
-                            Long: uploadProductInfo.Long,
-                            body: uploadProductInfo.size,
-                            colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
-                            quantity: 0,
-                            priceJustSharee: null,
-                            pantMaterial: null,
-                            brand: null,
-                            dupattaMaterial: null,
-                            category: null,
-                            productMaterial: null,
-                            shareeLong: null,
-                            panjabiSize: null,
-                            note: null
+        if (uploadProductInfo.name && uploadProductInfo.size && uploadProductInfo.shareStePrice && imageFile && uploadProductInfo.productType && uploadProductInfo.shortDesc && uploadProductInfo.Long && uploadProductInfo.size) {
+            fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fetch("http://localhost:5000/allProducts", {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                handCodedId: "abaya",
+                                name: uploadProductInfo.name,
+                                priceSet: uploadProductInfo.shareStePrice,
+                                stock: "Available",
+                                ratings: 5,
+                                img: data.data.url,
+                                deliveryInDhaka: 80,
+                                deliveryOutDhaka: 110,
+                                typeOfProduct: uploadProductInfo.productType,
+                                shortDesc: uploadProductInfo.shortDesc,
+                                Long: uploadProductInfo.Long,
+                                body: uploadProductInfo.size,
+                                colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+                                quantity: 0,
+                                priceJustSharee: null,
+                                pantMaterial: null,
+                                brand: null,
+                                dupattaMaterial: null,
+                                category: null,
+                                productMaterial: null,
+                                shareeLong: null,
+                                panjabiSize: null,
+                                note: null
+                            })
                         })
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
-                        })
-                }
+                            .then(res => res.json())
+                            .then(result => {
+                                console.log(result);
+                            })
+                    }
+                });
+        }
+        else {
+            setUploadProductErrors({
+                nameError: 'Name is required',
+                shareStePriceError: 'set price',
+                productTypeError: 'Type',
+                shortDescError: 'short decs',
+                LongError: 'long',
+                sizeError: 'size'
             });
+        }
 
     }
 

@@ -15,86 +15,36 @@ const TermsAndPrivacy = () => {
             <div id="main-details">
                 <div class="privacy-terms-container">
                     <h3>Privacy Policy</h3>
-                    <p>Last modified: September 20, 2021</p>
+                    <p>Last modified: February 02, 2023</p>
 
                     <div>
-                        <p>Codinism built the Programming Hero app as a Freemium app. This SERVICE is provided by Codinism at
-                            no cost and is intended for use as is.</p>
-                        <p>This page is used to inform visitors regarding our policies with the collection, use, and disclosure
-                            of Personal Information if anyone decided to use our Service.</p>
-                        <p>If you choose to use our Service, then you agree to the collection and use of information in relation
-                            to this policy. The Personal Information that we collect is used for providing and improving the Service. We
-                            will not use or share your information with anyone except as described in this Privacy Policy.</p>
-                        <p>The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which
-                            is accessible at Programming Hero unless otherwise defined in this Privacy Policy.</p>
-                        <p>Information Collection and Use</p>
-                        <p>For a better experience, while using our Service, we may require you to provide us with certain personally
-                            identifiable information, including but not limited to Name, Email, City, Country. The information that we request
-                            will be retained by us and used as described in this privacy policy.</p>
-                        <p>The app does use third-party services that may collect information used to identify you.</p>
-
+                        <p>We take data privacy seriously and are committed to protecting your privacy at all costs. We have never sold your inform Alinarbd comation to any third party for financial gains, advertising, or for any other reason and we assure you that we won’t even in the future. </p>
+                        <p>We take care that none of the information that we collect is sold, put up for rent, leased, given away or used for spamming you unnecessarily. This Privacy Policy explains, in depth, what data we collect, how we collect it, where and how we store or use it, and what rights you have over it.</p>
                     </div>
 
                     <div>
-                        <p><strong>Log Data</strong></p>
-                        <p>We want to inform you that whenever you use our Service, in a case of an error in the app we collect
-                            data and information (through third-party products) on your phone called Log Data. This Log Data may include
-                            information such as your device Internet Protocol (&ldquo;IP&rdquo;) address, device name, operating system version,
-                            the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other
-                            statistics.</p>
+                        <p><strong>Return policy</strong></p>
+                        <p>You will have to provide us customer name, number and address so that we may issue warranty service as applicable. In case of customer returns, we will only accept the returned good if it is returned back to us in intact condition. Body Dented / damaged packaging / seal broken products or any other condition which makes the product unsellable, will not be acceptable to claim under return policy</p>
                     </div>
 
                     <div>
-                        <p><strong>Service Providers</strong></p>
-                        <p>We may employ third-party companies and individuals due to the following reasons:</p>
-                        <ul>
-                            <li>
-                                <p>To facilitate our Service;</p>
-                            </li>
-                            <li>
-                                <p>To provide the Service on our behalf;</p>
-                            </li>
-                            <li>
-                                <p>To perform Service-related services; or</p>
-                            </li>
-                            <li>
-                                <p>To assist us in analyzing how our Service is used.</p>
-                            </li>
-                        </ul>
-                        <p>We want to inform users of this Service that these third parties have access to your Personal Information.
-                            The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose
-                            or use the information for any other purpose.</p>
+                        <p><strong>Search Features</strong></p>
+                        <p>Alinar provides various search features, such as real time search suggestions as you type a search query. When you conduct a search we collect information from your experience, such as your search queries. Alinar may base suggestions on aggregated searches across all users. A variety of third party providers help power Alinar search and sponsored search services. We may share your search query, IP address, and other depersonalized information from your web browser with these search partners. These third party providers may use this information, as well as your search results clicks, to provide more relevant advertising and search results for search product improvement, research and analysis, and to help detect and defend against fraudulent activity on sponsored or contextual search results. As a web directory and search engine, and as an advertising publisher, you will find various links on our site, including but not limited to sponsored search results and sponsored listings.</p>
                     </div>
 
                     <div>
                         <p><strong>Security</strong></p>
-                        <p>We value your trust in providing us your Personal Information, thus we are striving to use commercially
-                            acceptable means of protecting it. But remember that no method of transmission over the internet, or method of
-                            electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+                        <p>We maintain a level of security at all times in the processing of data and personal data that is appropriate to prevent unauthorized access to, modification, disclosure or loss of data and personal data. This includes both technical and organizational measures (such as encryption of data, access control to our locations, and a limited group of employees who have access to the data, pseudonymization of data, anonymization of data, etc.)</p>
                     </div>
 
                     <div>
                         <p><strong>Links to Other Sites</strong></p>
-                        <p>This Service may contain links to other sites. If you click on a third-party link, you will be directed
-                            to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review
-                            the Privacy Policy of these websites. We have no control over and assume no responsibility for the content, privacy
-                            policies, or practices of any third-party sites or services.</p>
-                    </div>
-
-                    <div>
-                        <p><strong>Children&rsquo;s Privacy</strong></p>
-                        <p>These Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable
-                            information from children under 13. In the case we discover that a child under 13 has provided us with personal
-                            information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that
-                            your child has provided us with personal information, please contact us so that we will be able to do necessary
-                            actions.</p>
+                        <p>Although Alinar provides numerous links to web sites, Alinar has no control over any of the sites we feature anywhere on the site. Featured sites on Alinar may use cookies of their own or other files on your computer, collect data or solicit personally identifiable information from you. Other sites comply with different rules regarding the use or disclosure of the personally identifiable information submitted to them by users. Please consult the privacy policies and / or statements of the other web sites you visit.</p>
                     </div>
 
                     <div>
                         <p><strong>Changes to This Privacy Policy</strong></p>
-                        <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically
-                            for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes
-                            are effective immediately after they are posted on this page.</p>
+                        <p>We may update our Privacy Policy from time to time. Thus, you are advised to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately after they are posted on this page.</p>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ span.my-order-divider {
   border: 0.4px solid #2b2b2b;
   display: block;
   background: #2b2b2b;
+  margin-top: 2rem;
 }
 
 span.img-row img {
@@ -26,8 +27,7 @@ span.img-row {
 
 .button-grp {
   display: flex;
-  width: 50%;
-  /* margin: -3rem auto 2rem auto; */
+  align-items: center;
 }
 
 p.confirm-text {

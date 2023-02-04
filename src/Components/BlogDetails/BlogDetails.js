@@ -1,14 +1,42 @@
 import React from "react";
 import "./BlogDetails.css";
-import blogPic from "../../assets/blogs.jpg";
+import { useParams } from "react-router-dom";
+import blogs1 from '../../assets/blogs.jpg';
+import blogs2 from '../../assets/blogs.jpg';
+import blogs3 from '../../assets/blogs.jpg';
 
 const BlogDetails = () => {
+  const { blogId } = useParams();
+  const blogsData = [
+    {
+      id: "B1",
+      img: blogs1,
+      title: "Fast Delivery",
+      shortDecs: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, quas.",
+      longDecs: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit esse blanditiis distinctio harum explicabo vitae et, adipisci inventore alias, doloribus quo qui quasi at soluta rerum iure obcaecati. Magni nisi doloribus repudiandae veniam? Distinctio quod accusamus quisquam natus eos, in, magnam maiores nihil rerum est cumque culpa cum, nam reiciendis."
+    },
+    {
+      id: "B2",
+      img: blogs2,
+      title: "A Good Auto Responder",
+      shortDecs: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, quas.",
+      longDecs: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit esse blanditiis distinctio harum explicabo vitae et, adipisci inventore alias, doloribus quo qui quasi at soluta rerum iure obcaecati. Magni nisi doloribus repudiandae veniam? Distinctio quod accusamus quisquam natus eos, in, magnam maiores nihil rerum est cumque culpa cum, nam reiciendis."
+    },
+    {
+      id: "B3",
+      img: blogs3,
+      title: "Home Delevery",
+      shortDecs: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, quas.",
+      longDecs: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit esse blanditiis distinctio harum explicabo vitae et, adipisci inventore alias, doloribus quo qui quasi at soluta rerum iure obcaecati. Magni nisi doloribus repudiandae veniam? Distinctio quod accusamus quisquam natus eos, in, magnam maiores nihil rerum est cumque culpa cum, nam reiciendis."
+    }
+  ]
+  const targetedBlog = blogsData.find(blog => blog.id === blogId);
   return (
     <div className="blogs">
       <div className="container">
-        <h3>Roommate Etiquette 101</h3>
+        <h3>{targetedBlog.title}</h3>
         <small>Published on July 12. 2022</small>
-        <img src={blogPic} alt="Piture Of blog" />
+        <img src={targetedBlog.img} alt="Piture Of blog" />
         <p>
           The internet is overflowing with thoughts and advice on how to get
           along with your apartment roommate. We want you to be a good roommate,
@@ -103,6 +131,7 @@ const BlogDetails = () => {
           </p>
         </div>
       </div>
+
     </div>
   );
 };

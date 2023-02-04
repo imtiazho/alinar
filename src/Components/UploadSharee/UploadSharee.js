@@ -97,50 +97,64 @@ const UploadSharee = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', imageFile);
-        fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
-            method: 'POST',
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    fetch("http://localhost:5000/allProducts", {
-                        method: 'POST',
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            handCodedId: "sharee",
-                            name: uploadProductInfo.name,
-                            priceSet: uploadProductInfo.shareStePrice,
-                            priceJustSharee: uploadProductInfo.onlyShare,
-                            stock: "Available",
-                            ratings: 5,
-                            img: data.data.url,
-                            deliveryInDhaka: 80,
-                            deliveryOutDhaka: 110,
-                            typeOfProduct: uploadProductInfo.productType,
-                            productMaterial: uploadProductInfo.productMaterial,
-                            shareeLong: uploadProductInfo.shareeLong,
-                            panjabiSize: "সকল সাইজ এভেইলেবল",
-                            colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
-                            note: "পাঞ্জাবি আলাদা সেল হবে না",
-                            quantity: 0,
-                            shortDesc: null,
-                            body: null,
-                            Long: null,
-                            pantMaterial: null,
-                            brand: null,
-                            dupattaMaterial: null,
-                            category: null,
+        if (uploadProductInfo.name && uploadProductInfo.shareStePrice && uploadProductInfo.onlyShare && uploadProductInfo.image && uploadProductInfo.productType && uploadProductInfo.productMaterial && uploadProductInfo.shareeLong) {
+            fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        fetch("http://localhost:5000/allProducts", {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                handCodedId: "sharee",
+                                name: uploadProductInfo.name,
+                                priceSet: uploadProductInfo.shareStePrice,
+                                priceJustSharee: uploadProductInfo.onlyShare,
+                                stock: "Available",
+                                ratings: 5,
+                                img: data.data.url,
+                                deliveryInDhaka: 80,
+                                deliveryOutDhaka: 110,
+                                typeOfProduct: uploadProductInfo.productType,
+                                productMaterial: uploadProductInfo.productMaterial,
+                                shareeLong: uploadProductInfo.shareeLong,
+                                panjabiSize: "সকল সাইজ এভেইলেবল",
+                                colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+                                note: "পাঞ্জাবি আলাদা সেল হবে না",
+                                quantity: 0,
+                                shortDesc: null,
+                                body: null,
+                                Long: null,
+                                pantMaterial: null,
+                                brand: null,
+                                dupattaMaterial: null,
+                                category: null,
+                            })
                         })
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            console.log(result);
-                        })
-                }
-            });
+                            .then(res => res.json())
+                            .then(result => {
+                                console.log(result);
+                            })
+                    }
+                });
+        }
+        else {
+            setUploadProductErrors({
+                nameError: "Error",
+                shareStePriceError: "Error",
+                onlyShareError: "Error",
+                imageError: "Error",
+                productTypeError: "Error",
+                productMaterialError: "Error",
+                shareeLongError: "Error",
+            })
+        }
+
     }
     return (
         <div className="shipping">

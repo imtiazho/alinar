@@ -106,7 +106,9 @@ const ConfirmOrder = () => {
           <p>
             Type of product:{" "}
             {storedCart?.map((product) => (
-              <span>{product.typeOfProduct}</span>
+              <span>{product.typeOfProduct}
+                {storedCart.length > 0 && ", "}
+              </span>
             ))}{" "}
           </p>
         </span>

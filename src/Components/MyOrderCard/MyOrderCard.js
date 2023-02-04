@@ -80,36 +80,49 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder }) => {
         </span>
       </div>
 
+      <div className="all-button-in-order-card">
+        {admin ||
+          <div>
+            {orderStatus ?
+              <p className="confirm-text">✓ This order is accepted by Admin</p> :
+              <button
+                onClick={() => handleDeleteOne(_id)}
+                className="confirm-order-btn"
+              >
+                Cancel Order
+              </button>}
+          </div>
+        }
+
+
+        {/* Optional Button for Admin Only */}
+        {admin && <div className="button-grp">
+          {orderStatus ? <p className="confirm-text">✓ This order is accepted by Admin</p> : <button
+            onClick={() => handleConfirmOrder(_id)}
+            className="confirm-order-btn"
+          >
+            Accept Order
+          </button>}
+
+          <button
+            onClick={() => handleDeleteOne(_id)}
+            className="confirm-order-btn"
+          >
+            Delete This Order
+          </button>
+        </div>}
+      </div>
+
       {/* {orderStatus || <button
         onClick={() => handleDeleteOne(_id)}
         className="confirm-order-btn"
       >
         Cancel Order
       </button>} */}
-      {orderStatus ?
-        <p className="confirm-text">✓ This order is accepted by Authority</p> :
-        <button
-          onClick={() => handleDeleteOne(_id)}
-          className="confirm-order-btn"
-        >
-          Cancel Order
-        </button>}
 
-      {admin && <div className="button-grp">
-        {orderStatus || <button
-          onClick={() => handleConfirmOrder(_id)}
-          className="confirm-order-btn"
-        >
-          Accept Order
-        </button>}
 
-        <button
-          onClick={() => handleDeleteOne(_id)}
-          className="confirm-order-btn"
-        >
-          Delete This Order
-        </button>
-      </div>}
+
+      {/*  */}
 
       <span className="my-order-divider"></span>
     </div>

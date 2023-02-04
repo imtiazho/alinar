@@ -4,6 +4,7 @@ import { useQuery } from 'react-query';
 import ManageProductCard from '../ManageProductCard/ManageProductCard';
 import Spinner from '../Spinner/Spinner';
 import './ManageProduct.css';
+import { toast } from 'react-hot-toast';
 
 const ManageProduct = () => {
     const {
@@ -18,7 +19,18 @@ const ManageProduct = () => {
     }
 
     const deleteProduct = (id) => {
-        console.log('Delete Targeted Product', id)
+        const confirmationToDelete = window.confirm("Are you sure to delete?");
+        if (confirmationToDelete) {
+            fetch(`http://localhost:5000/allproduct/${id}`, {
+                method: "DELETE",
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Delete Done!')
+                    }
+                })
+        }
     }
 
     return (

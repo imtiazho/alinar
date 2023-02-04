@@ -1,35 +1,36 @@
 .blog-card {
-    color: #fff;
-    text-align: center;
+  color: #fff;
+  text-align: center;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
 .blog-card h3 {
-    margin-top: -2rem;
+  margin-top: -2rem;
 }
 .author,
 .blog-degi {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .author {
-    padding: 8px 10px;
-    background-color: #EEBF0E;
-    gap: 1rem;
-    width: fit-content;
-    transform: translateY(-43px);
+  color: #000;
+  padding: 8px 10px;
+  background-color: #eebf0e;
+  gap: 1rem;
+  width: fit-content;
+  transform: translateY(-43px);
 }
 
 .blog-degi {
-    gap: 0.5rem;
+  gap: 0.5rem;
 }
 
 .blog-degi i,
 .blog-degi p {
-    font-size: 13px;
+  font-size: 13px;
 }
