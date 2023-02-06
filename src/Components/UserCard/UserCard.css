@@ -28,7 +28,9 @@
 }
 
 .btn-grp .terminate-btn {
-  background-color: red;
+  background-color: #969696;
+  color: #707070;
+  cursor: not-allowed;
 }
 
 .admin-sign {

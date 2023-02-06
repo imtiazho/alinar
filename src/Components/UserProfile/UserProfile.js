@@ -20,7 +20,7 @@ const UserProfile = () => {
         fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then((res) => res.json())
     );
 
-    if (loading) {
+    if (loading || isLoading) {
         <Spinner />
     }
 

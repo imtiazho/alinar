@@ -27,7 +27,7 @@ const ManageProduct = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        toast.success('Delete Done!')
+                        toast.success('Deleted successfully')
                     }
                 })
         }

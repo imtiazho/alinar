@@ -28,7 +28,7 @@ const AllOrders = () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if (data.deletedCount > 0) {
-                        toast.success('Order Canceled!')
+                        toast.success('Order Canceled!');
                     }
                 });
         }
@@ -41,7 +41,11 @@ const AllOrders = () => {
                 method: "PUT",
             })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('Order confirmed');
+                    }
+                })
         }
     }
 

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import './UploadAbaya.css';
 
 const UploadAbaya = () => {
+    const navigate = useNavigate();
     const [imageFile, setImageFile] = useState("");
     const [uploadProductInfo, setUploadProductInfo] = useState({
         name: "",
@@ -108,7 +111,7 @@ const UploadAbaya = () => {
 
         const formData = new FormData();
         formData.append('image', imageFile);
-        if (uploadProductInfo.name && uploadProductInfo.size && uploadProductInfo.shareStePrice && imageFile && uploadProductInfo.productType && uploadProductInfo.shortDesc && uploadProductInfo.Long && uploadProductInfo.size) {
+        if (uploadProductInfo.name || uploadProductInfo.size || uploadProductInfo.shareStePrice || imageFile || uploadProductInfo.productType || uploadProductInfo.shortDesc || uploadProductInfo.Long || uploadProductInfo.size) {
             fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
                 method: 'POST',
                 body: formData
@@ -149,7 +152,10 @@ const UploadAbaya = () => {
                         })
                             .then(res => res.json())
                             .then(result => {
-                                console.log(result);
+                                if (result.acknowledged) {
+                                    toast.success("Uploaded baya succesfully");
+                                    navigate("/shop")
+                                }
                             })
                     }
                 });
@@ -158,6 +164,7 @@ const UploadAbaya = () => {
             setUploadProductErrors({
                 nameError: 'Name is required',
                 shareStePriceError: 'set price',
+                imageError: "Error",
                 productTypeError: 'Type',
                 shortDescError: 'short decs',
                 LongError: 'long',

@@ -7,7 +7,8 @@ import './EditProfile.css';
 const EditProfile = () => {
     const [imageFile, setImageFile] = useState("");
     const [user, loading, userError] = useAuthState(auth);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
     const handleImage = (e) => {
         setImageFile(e.target.files[0])
     };

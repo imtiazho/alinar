@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 const UploadThreePis = () => {
+    const navigate = useNavigate();
     const [imageFile, setImageFile] = useState("");
     const [uploadProductInfo, setUploadProductInfo] = useState({
         name: "",
@@ -124,14 +127,14 @@ const UploadThreePis = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', imageFile);
-        if (uploadProductInfo.name &&
-            uploadProductInfo.shareStePrice &&
-            uploadProductInfo.image &&
-            uploadProductInfo.productType &&
-            uploadProductInfo.productMaterial &&
-            uploadProductInfo.pantMaterial &&
-            uploadProductInfo.dupattaMaterial &&
-            uploadProductInfo.category &&
+        if (uploadProductInfo.name ||
+            uploadProductInfo.shareStePrice ||
+            uploadProductInfo.image ||
+            uploadProductInfo.productType ||
+            uploadProductInfo.productMaterial ||
+            uploadProductInfo.pantMaterial ||
+            uploadProductInfo.dupattaMaterial ||
+            uploadProductInfo.category ||
             uploadProductInfo.brand) {
 
             fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
@@ -174,7 +177,10 @@ const UploadThreePis = () => {
                         })
                             .then(res => res.json())
                             .then(result => {
-                                console.log(result);
+                                if (result.acknowledged) {
+                                    toast.success("Uploaded Three Pis succesfully");
+                                    navigate("/shop")
+                                }
                             })
                     }
                 });
@@ -277,7 +283,7 @@ const UploadThreePis = () => {
 
                     <div>
                         <div className="input-field">
-                            <input onBlur={handleBrand} type="text" placeholder="Categories" />
+                            <input onBlur={handleBrand} type="text" placeholder="Brand" />
                         </div>
                         {uploadProductErrors.brandError && (
                             <p className="error-message">{uploadProductErrors.brandError}</p>

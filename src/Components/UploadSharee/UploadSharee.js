@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import './UploadSharee.css';
 
 const UploadSharee = () => {
+    const navigate = useNavigate();
     const [imageFile, setImageFile] = useState("");
     const [uploadProductInfo, setUploadProductInfo] = useState({
         name: "",
@@ -97,7 +100,7 @@ const UploadSharee = () => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('image', imageFile);
-        if (uploadProductInfo.name && uploadProductInfo.shareStePrice && uploadProductInfo.onlyShare && uploadProductInfo.image && uploadProductInfo.productType && uploadProductInfo.productMaterial && uploadProductInfo.shareeLong) {
+        if (uploadProductInfo.name || uploadProductInfo.shareStePrice || uploadProductInfo.onlyShare || uploadProductInfo.image || uploadProductInfo.productType || uploadProductInfo.productMaterial || uploadProductInfo.shareeLong) {
             fetch('https://api.imgbb.com/1/upload?key=e1d2f79536b9ce2ec4dee06be35ccb21', {
                 method: 'POST',
                 body: formData
@@ -138,7 +141,10 @@ const UploadSharee = () => {
                         })
                             .then(res => res.json())
                             .then(result => {
-                                console.log(result);
+                                if (result.acknowledged) {
+                                    toast.success("Uploaded Sharee succesfully");
+                                    navigate("/shop")
+                                }
                             })
                     }
                 });
