@@ -14,8 +14,16 @@ const AllOrders = () => {
     } = useQuery("ordersData", () =>
         fetch("http://localhost:5000/allOrders").then((res) => res.json())
     );
+    const {
+        DisLoading,
+        Derror,
+        data: allProducts,
+    } = useQuery("Data", () =>
+        fetch("http://localhost:5000/allProducts").then((res) => res.json())
+    );
 
-    if (isLoading) {
+    console.log(allProducts)
+    if (isLoading || DisLoading) {
         return <Spinner />;
     }
 
@@ -49,9 +57,33 @@ const AllOrders = () => {
         }
     }
 
+    const handleDeliveryCounter = (productName) => {
+        const confrimToIncrease = window.confirm("Delivered successfully?");
+        const targetedPro = allProducts.find(eachProduct => eachProduct.name === productName);
+        const deliveredCount = targetedPro.delivered + 1;
+        if (confrimToIncrease) {
+            fetch(`http://localhost:5000/productDeliverCounter/${productName}`, {
+                method: "PUT",
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    delivered: deliveredCount
+                })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount > 0) {
+                        toast.success('Delivered Successfully');
+                    }
+                })
+        }
+
+    }
+
     return (
         <div className='all-my-order'>
-            {data.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} handleConfirmOrder={handleConfirmOrder} key={eachOrder._id} />)}
+            {data?.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} handleConfirmOrder={handleConfirmOrder} handleDeliveryCounter={handleDeliveryCounter} key={eachOrder._id} />)}
         </div>
     );
 };

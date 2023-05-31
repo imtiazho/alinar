@@ -1,50 +1,87 @@
 .new-arrivals {
-    margin-top: 5rem;
+  margin-top: 5rem;
 }
 
 .new-arrivals-container {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h2.sention-title {
-    color: #fff;
-    text-align: center;
-    position: relative;
-    font-weight: 500;
-    font-size: 26px;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  font-weight: 500;
+  font-size: 26px;
 }
 
 h2.sention-title p {
-    position: absolute;
-    font-size: 110px;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    z-index: -100;
-    color: #25252530;
+  position: absolute;
+  font-size: 110px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  z-index: -100;
+  color: #25252530;
 }
 
 .items-short-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: max-content;
-    margin: 4rem auto;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: max-content;
+  margin: 4rem auto;
+  gap: 2rem;
 }
 
-
 .items-short-nav div {
-    display: inline-block;
+  display: inline-block;
 }
 
 .items-short-nav div a {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 
 .checkout-btn {
-    display: flex;
-    width: max-content;
-    margin: 0 auto;
+  display: flex;
+  width: max-content;
+  margin: 0 auto;
+}
+
+/* Respinsive design start Here  */
+@media screen and (max-width: 1200px) {
+  .new-arrivals-container {
+    width: 90%;
+  }
+  h2.sention-title p {
+    font-size: 95px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .items-short-nav {
+    gap: 1.4rem;
+    margin: 3rem auto 2rem auto;
+  }
+  h2.sention-title {
+    font-size: 22px;
+  }
+  h2.sention-title p {
+    font-size: 75px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .new-arrivals-container {
+    width: 95%;
+  }
+  h2.sention-title {
+    font-size: 20px;
+  }
+  h2.sention-title p {
+    font-size: 70px;
+  }
+  .new-arrivals {
+    margin-top: 3.5rem;
+  }
 }

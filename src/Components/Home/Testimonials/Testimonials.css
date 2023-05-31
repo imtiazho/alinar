@@ -1,52 +1,120 @@
 .testimonial {
-    width: 50%;
-    margin: auto;
-    color: #9CADB9;
-    padding: 2rem;
-    position: relative;
+  width: 50%;
+  margin: auto;
+  color: #9cadb9;
+  padding: 2rem;
+  position: relative;
 }
 
 .swiper-wrapper-cus {
-    margin: 5rem 0;
+  margin: 5rem 0;
 }
 
 .slide {
-    cursor: pointer;
-    background: #1E1E27;
-    border-radius: 10px;
-    padding: 1.5rem;
+  cursor: pointer;
+  background: #1e1e27;
+  border-radius: 10px;
+  padding: 1.5rem;
 }
 
 .head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .profile {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .clientImage {
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    overflow: hidden;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .clientImage img {
-    max-width: 115%;
+  max-width: 115%;
 }
 
 .slide p {
-    margin-top: 2rem;
-    font-size: 15px;
+  margin-top: 2rem;
+  font-size: 15px;
+  font-family: "Noto Sans Bengali", sans-serif;
 }
 
 .stars i {
-    font-size: 15px;
-    margin: 0 3px;
-    color: #EEBF0E;
+  font-size: 15px;
+  margin: 0 3px;
+  color: #eebf0e;
+}
+
+.profile .info cite {
+  font-size: 13px;
+}
+
+/* Responsive  */
+@media screen and (max-width: 1200px) {
+  .testimonial {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .testimonial {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .testimonial {
+    width: 90%;
+  }
+  .swiper-wrapper-cus {
+    margin: 4rem 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .testimonial {
+    width: 97%;
+  }
+  .profile {
+    gap: 0.5rem;
+  }
+  .clientImage {
+    width: 3rem;
+    height: 3rem;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile .info h4 {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  .profile .info cite {
+    font-size: 11px;
+  }
+  .stars i {
+    font-size: 13px;
+  }
+  .swiper-wrapper-cus {
+    margin: 3rem 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .head {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .slide p {
+    text-align: center;
+    margin-top: 1rem;
+  }
 }

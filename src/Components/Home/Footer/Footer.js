@@ -19,7 +19,7 @@ const Footer = () => {
 
                     <div className="links">
                         <Link to='/shop'>Shop</Link>
-                        <Link to='/signup'>Signup to deliver</Link>
+                        <Link to='/'>Signup to deliver</Link>
                     </div>
                 </div>
 

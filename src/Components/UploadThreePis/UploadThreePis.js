@@ -166,6 +166,7 @@ const UploadThreePis = () => {
                                 category: uploadProductInfo.category,
                                 colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
                                 quantity: 0,
+                                delivered: 0,
                                 shortDesc: null,
                                 Long: null,
                                 body: null,

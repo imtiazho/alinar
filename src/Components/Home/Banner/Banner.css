@@ -59,3 +59,38 @@
   color: #000;
   border: 1px solid #000;
 }
+
+/* Responsive Design start Here */
+@media screen and (max-width: 1150px) {
+  .banner-container h1 {
+    font-size: 3.5rem;
+  }
+  .banner-main {
+    height: 90vh;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .banner-container h1 {
+    font-size: 3.2rem;
+  }
+  .banner-main {
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .banner-container h1 {
+    font-size: 3rem;
+    line-height: 67px;
+  }
+  .banner-main {
+    height: 70vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .banner-main {
+    display: none;
+  }
+}

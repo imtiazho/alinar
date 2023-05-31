@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UpperNav from "../UpperNav/UpperNav";
 import "./NavBar.css";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaUserAlt } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
+import { BsFillCartCheckFill } from "react-icons/bs";
 import logo from "../../../assets/logo.png";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
@@ -80,6 +81,7 @@ const NavBar = () => {
 
   return (
     <div className="main-nav">
+      {navStatus && <ul onClick={() => steNavOpen(!navStatus)} className="nav-Open">{menuItems}</ul>}
       <UpperNav />
       <div className="nav-container">
         <Link to="/">
@@ -92,7 +94,7 @@ const NavBar = () => {
           <ul className="log-cart">
             <li className="cart-icon">
               <Link to="/cart">
-                <i className="fa-solid fa-cart-shopping"></i>
+                <BsFillCartCheckFill />
               </Link>
               <span className="cart-length">
                 {quantityFromStoredCart || quantityFromSeasonCart}
@@ -129,17 +131,17 @@ const NavBar = () => {
             ) : (
               <li className="login-icon">
                 <Link to="/login">
-                  <i className="fa-sharp fa-solid fa-user"></i>
+                  <FaUserAlt />
                 </Link>
               </li>
             )}
+            <div className="responsive-navBar">
+              <div onClick={() => steNavOpen(!navStatus)} className="bars">
+                {navStatus ? <ImCross /> : <FaBars />}
+              </div>
+            </div>
           </ul>
-        </div>
 
-        <div className="responsive-navBar">
-          <div onClick={() => steNavOpen(!navStatus)} className="bars">
-            {navStatus ? <ImCross /> : <FaBars />}
-          </div>
         </div>
       </div>
     </div>

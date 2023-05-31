@@ -8,6 +8,7 @@ import {
 import auth from "../../Firebase/Firebase.init";
 import { toast } from "react-hot-toast";
 import Spinner from "../Spinner/Spinner";
+import HelmetComponent from "../HelmetComponent/HelmetComponent";
 
 const Login = () => {
   const [signInWithEmailAndPassword, hookUser, hookLoading, hookError] =
@@ -91,6 +92,7 @@ const Login = () => {
 
   return (
     <div className="form">
+      <HelmetComponent pageName={"alinar - login"} />
       <div className="form-container">
         <form onSubmit={handleForm}>
           <h3 className="form-title">Login</h3>

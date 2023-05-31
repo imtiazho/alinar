@@ -4,8 +4,31 @@
 .latest-blog-container {
   width: 80%;
   margin: 5rem auto;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .latest-blog-container {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .latest-blog-container {
+    margin: 3rem auto;
+    width: 95%;
+  }
+  .latest-blog {
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .latest-blog-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

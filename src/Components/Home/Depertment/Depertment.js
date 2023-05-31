@@ -1,8 +1,8 @@
 import React from 'react';
 import './Depertment.css'
-import depertmentImg1 from '../../../assets/item-1.jpg'
-import depertmentImg2 from '../../../assets/item-2.jpg'
-import depertmentImg3 from '../../../assets/item-3.jpg'
+import depertmentImg1 from '../../../assets/cate-1.jpg'
+import depertmentImg2 from '../../../assets/cate-2.jpg'
+import depertmentImg3 from '../../../assets/cate-3.jpg'
 
 const Depertment = () => {
     return (

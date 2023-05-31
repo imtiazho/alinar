@@ -1,32 +1,80 @@
 [
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg"
-    },
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/M5WfQ53/Green-Yellow-Butterfly-Couple-Set.jpg"
-    },
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/M5WfQ53/Green-Yellow-Butterfly-Couple-Set.jpg"
-    },
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg"
-    },
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/M5WfQ53/Green-Yellow-Butterfly-Couple-Set.jpg"
-    },
-    {
-        "name": "ALNR T301",
-        "ratings": 5,
-        "img": "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg"
-    }
+  {
+    "handCodedId": "bestSellingProduct",
+    "name": "Green Yellow Butterfly Couple Set",
+    "priceSet": 1200,
+    "priceJustSharee": 950,
+    "stock": "Available",
+    "ratings": 5,
+    "img": "https://i.ibb.co/M5WfQ53/Green-Yellow-Butterfly-Couple-Set.jpg",
+    "deliveryInDhaka": 80,
+    "deliveryOutDhaka": 110,
+    "shortDesc": null,
+    "body": null,
+    "Long": null,
+    "pantMaterial": null,
+    "brand": null,
+    "dupattaMaterial": null,
+    "category": null,
+    "typeOfProduct": "হ্যান্ড পেইন্টিং",
+    "productMaterial": "শাড়ি হাফ সিল্কের উপর হ্যান্ড পেইন্টিং এবং পাঞ্জাবি কটন মিক্স এর উপর হ্যান্ড পেইন্টিং।",
+    "shareeLong": "১২ হাত লম্বা",
+    "panjabiSize": "সকল সাইজ এভেইলেবল",
+    "colorGurrenty": "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+    "note": "পাঞ্জাবি আলাদা সেল হবে না",
+    "quantity": 0,
+    "delivered": 12
+  },
+  {
+    "handCodedId": "bestSellingProduct",
+    "name": "Kaftan Abaya",
+    "priceSet": 1220,
+    "stock": "Available",
+    "ratings": 5,
+    "img": "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg",
+    "deliveryInDhaka": 80,
+    "deliveryOutDhaka": 110,
+    "typeOfProduct": "ABAYA",
+    "shortDesc": "Double Jorjet and Inner part American Crap.",
+    "Long": 45,
+    "body": "Free Size",
+    "colorGurrenty": "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+    "quantity": 0,
+    "priceJustSharee": null,
+    "pantMaterial": null,
+    "brand": null,
+    "dupattaMaterial": null,
+    "category": null,
+    "productMaterial": null,
+    "shareeLong": null,
+    "panjabiSize": null,
+    "note": null,
+    "delivered": 11
+  },
+  {
+    "handCodedId": "bestSellingProduct",
+    "name": "ALNR T301",
+    "priceSet": 2350,
+    "stock": "Available",
+    "ratings": 5,
+    "img": "https://i.ibb.co/Dt1nXHh/IMG-1076.jpg",
+    "deliveryInDhaka": 80,
+    "deliveryOutDhaka": 110,
+    "typeOfProduct": "Indian",
+    "productMaterial": "Net Sequence Body",
+    "pantMaterial": "Shatoon Silk Kapo",
+    "dupattaMaterial": "Embroidered Net Dupatta",
+    "brand": "Original Shree Fabs Brand",
+    "category": "Partywear",
+    "colorGurrenty": "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
+    "quantity": 0,
+    "shortDesc": null,
+    "Long": null,
+    "body": null,
+    "priceJustSharee": null,
+    "shareeLong": null,
+    "panjabiSize": null,
+    "note": null,
+    "delivered": 2
+  }
 ]

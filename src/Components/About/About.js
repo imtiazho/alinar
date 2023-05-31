@@ -2,10 +2,12 @@ import React from 'react';
 import './About.css'
 import aboutSvg from '../../assets/about.svg'
 import { Link } from 'react-router-dom';
+import HelmetComponent from '../HelmetComponent/HelmetComponent';
 
 const About = () => {
     return (
         <div className='about'>
+            <HelmetComponent pageName={"alinar - about"} />
             <img src={aboutSvg} alt="" />
 
             <div className="about-text">

@@ -4,7 +4,7 @@ import auth from "../../Firebase/Firebase.init";
 import useAdmin from "../../Hooks/useAdmin";
 import "./MyOrderCard.css";
 
-const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder }) => {
+const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder, handleDeliveryCounter }) => {
   const [user, loading, UserError] = useAuthState(auth);
   const [admin, setAdmin] = useAdmin(user);
 
@@ -109,6 +109,13 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder }) => {
             className="confirm-order-btn"
           >
             Delete This Order
+          </button>
+
+          <button
+            onClick={() => handleDeliveryCounter(...productName)}
+            className="confirm-order-btn"
+          >
+            Delivered Successfully
           </button>
         </div>}
       </div>

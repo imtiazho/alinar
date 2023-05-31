@@ -39,8 +39,6 @@ const ProductCard = ({ product }) => {
     path = "threePisDetails";
   } else if (handCodedId?.includes("shopProducts")) {
     path = "shopProductDetail";
-  } else if (handCodedId?.includes("bestSellingProduct")) {
-    path = "bestSellingProduct";
   }
 
   return (

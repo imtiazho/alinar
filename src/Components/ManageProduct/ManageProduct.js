@@ -5,6 +5,7 @@ import ManageProductCard from '../ManageProductCard/ManageProductCard';
 import Spinner from '../Spinner/Spinner';
 import './ManageProduct.css';
 import { toast } from 'react-hot-toast';
+import HelmetComponent from '../HelmetComponent/HelmetComponent';
 
 const ManageProduct = () => {
     const {
@@ -35,6 +36,7 @@ const ManageProduct = () => {
 
     return (
         <div className='manage-product'>
+            <HelmetComponent pageName={"alinar - manage product"} />
             <Link to='/addProduct' className='place-order-btn'>+ Add New Product</Link>
             {data?.map(product => <ManageProductCard deleteProduct={deleteProduct} product={product} key={product._id} />)}
         </div>

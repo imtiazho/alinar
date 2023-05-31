@@ -8,6 +8,7 @@ import CustomLink from '../CustomLink/CustomLink';
 import Spinner from '../Spinner/Spinner';
 import { useQuery } from 'react-query';
 import useAdmin from '../../Hooks/useAdmin';
+import HelmetComponent from '../HelmetComponent/HelmetComponent';
 
 const UserProfile = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -26,12 +27,13 @@ const UserProfile = () => {
 
     return (
         <div>
+            <HelmetComponent pageName={`${user.displayName} - alinar`} />
             <div id="dash-board">
                 <div className="container">
                     <div className="left-side">
                         <div className="profile">
                             <img src={data?.userImage || anonymousUser} alt="" />
-                            <p>{user.displayName} <small>({data?.role ? data.role : "user"})</small></p>
+                            <p>{user?.displayName} <small>({data?.role ? data.role : "user"})</small></p>
                             <div className='edit-profile'>
                                 <Link to='/editProfile'><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Add Photo</Link>
                             </div>

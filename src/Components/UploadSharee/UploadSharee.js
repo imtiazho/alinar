@@ -130,6 +130,7 @@ const UploadSharee = () => {
                                 colorGurrenty: "কালার গ্যারান্টি সচারচর আমরা দিয়ে থাকে তবে এ গ্যারান্টি তখনই কার্যকর হবে যখন আপনি প্রোডাক্টটি তার গুনাগুন অনুযায়ী প্রোপার ইউজ করবেন।",
                                 note: "পাঞ্জাবি আলাদা সেল হবে না",
                                 quantity: 0,
+                                delivered: 0,
                                 shortDesc: null,
                                 body: null,
                                 Long: null,

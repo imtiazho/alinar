@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 import { CartContext } from "../../App";
 import { addToLocalStorage } from "../../LocalStorage/ManageLocalStorage";
 import "./ProductDetailsCard.css";
+import HelmetComponent from "../HelmetComponent/HelmetComponent";
 
 const ProductDetailsCard = ({ data }) => {
   const {
@@ -158,6 +159,7 @@ const ProductDetailsCard = ({ data }) => {
 
   return (
     <div className="product-details">
+      <HelmetComponent pageName={"alinar - product details"} />
       <div className="first-row">
         {img && (
           <div className="image">

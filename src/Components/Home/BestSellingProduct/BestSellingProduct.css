@@ -1,8 +1,20 @@
 .best-selling-product {
-    margin: 5rem auto;
-    width: 80%;
+  margin: 5rem auto;
+  width: 80%;
 }
 
-.best-selling-product .sention-title{
-    margin-bottom: 5rem;
+.best-selling-product .sention-title {
+  margin-bottom: 5rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .best-selling-product {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .best-selling-product {
+    width: 95%;
+  }
 }

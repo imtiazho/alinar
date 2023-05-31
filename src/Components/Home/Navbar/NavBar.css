@@ -3,7 +3,7 @@
 }
 
 .nav-container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   position: relative;
 }
@@ -50,7 +50,7 @@
 }
 
 .log-cart li a {
-  font-size: 17px;
+  font-size: 19px;
   color: #000;
 }
 
@@ -163,4 +163,46 @@ img.arrow {
 
 .responsive-navBar {
   display: none;
+  cursor: pointer;
+  z-index: 11;
+}
+
+@media only screen and (max-width: 1220px) {
+  .nav-container {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .nav-items {
+    display: none;
+  }
+  .nav-Open {
+    display: block;
+    position: absolute;
+    width: 100%;
+    background: #000;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .responsive-navBar {
+    display: block;
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .nav-container img {
+    width: 160px;
+  }
+}
+
+@media only screen and (max-width: 470px) {
+  .nav-container img {
+    width: 150px;
+  }
 }

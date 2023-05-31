@@ -9,6 +9,8 @@
 }
 .blog-card h3 {
   margin-top: -2rem;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 .author,
 .blog-degi {

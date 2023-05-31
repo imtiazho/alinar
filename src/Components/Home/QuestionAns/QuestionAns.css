@@ -12,49 +12,89 @@
   gap: 1.5rem;
   flex-direction: column;
 }
-
-.accordion li {
+.accordion div {
   width: 100%;
-  padding: 10px 10px 10px 15px;
-  border-radius: 8px;
-  background-color: #1e1e27;
+}
+.accordion__label,
+.accordion__content {
+  padding: 14px 20px;
 }
 
-.accordion li label {
-  display: flex;
-  align-items: center;
-  padding: 10px;
+.accordion__label {
+  display: block;
+  color: #ffffff;
   font-size: 20px;
+  background-color: #1e1e27;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: 600;
+  position: relative;
+  transition: background 0.1s;
   font-family: "Noto Sans Bengali", sans-serif;
 }
 
-.accordion li label::before {
-  content: "+";
-  margin-right: 10px;
-  font-size: 24px;
+.accordion__label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  width: 12px;
+  height: 6px;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+  background-size: contain;
+  transition: transform 0.4s;
 }
-
-.accordion li input[type="radio"] {
+.accordion__content p {
+  margin-bottom: 10px;
+  font-family: "Noto Sans Bengali", sans-serif;
+  font-size: 15px;
+}
+.accordion__content {
+  background: #1e1e27;
+  line-height: 1.6;
+  font-size: 0.85em;
   display: none;
 }
 
-.accordion .content {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.7s ease;
+.accordion__input {
+  display: none;
 }
 
-.accordion .content p {
-  margin-bottom: 10px;
-  font-family: "Noto Sans Bengali", sans-serif;
+.accordion__input:checked ~ .accordion__content {
+  display: block;
 }
 
-.accordion input[type="radio"]:checked + label + .content {
-  max-height: 200px;
+.accordion__input:checked ~ .accordion__label::after {
+  transform: translateY(-50%) rotate(0.5turn);
 }
 
-.accordion input[type="radio"]:checked + label::before {
-  content: "-";
+/* Responsive  */
+@media screen and (max-width: 1200px) {
+  .accordion {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .accordion {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .accordion {
+    width: 90%;
+  }
+  .accordion__label {
+    font-size: 17px;
+  }
+  .accordion__content p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .accordion {
+    width: 95%;
+  }
 }

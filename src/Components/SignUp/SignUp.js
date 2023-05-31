@@ -9,6 +9,7 @@ import {
 import auth from "../../Firebase/Firebase.init";
 import { toast } from "react-hot-toast";
 import Spinner from "../Spinner/Spinner";
+import HelmetComponent from "../HelmetComponent/HelmetComponent";
 
 const SignUp = () => {
   const [createUserWithEmailAndPassword, hookUser, hookLoading, hookError] =
@@ -112,6 +113,7 @@ const SignUp = () => {
 
   return (
     <div className="form signup-form">
+      <HelmetComponent pageName={"alinar - signup"} />
       <div className="form-container">
         <form onSubmit={handleForm}>
           <h3 className="form-title">Sign Up</h3>
