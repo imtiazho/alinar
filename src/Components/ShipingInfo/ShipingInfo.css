@@ -1,10 +1,6 @@
-.shipping{
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: auto;
-}
-.form-container{
-    width: 40%;
-    margin: 5rem auto 3rem auto;
+.shipping {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
 }

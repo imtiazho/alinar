@@ -31,3 +31,44 @@
 .blogs .container div {
   margin-top: 1rem;
 }
+
+/* Responsive */
+@media screen and (max-width: 1050px) {
+  .blogs .container h3 {
+    font-size: 22px;
+  }
+  .blogs .container img {
+    height: auto;
+  }
+  .blogs .container {
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .blogs .container {
+    width: 90%;
+  }
+  .blogs .container img {
+    margin: 0.5rem 0 1rem;
+  }
+  .blogs .container div {
+    margin-top: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .blogs .container img {
+    margin: 0.5rem 0;
+  }
+  .blogs .container div {
+    margin-top: 0.7rem;
+  }
+  .blogs .container div p,
+  .blogs .container p {
+    font-size: 15px;
+  }
+  .blogs .container small {
+    font-size: 12px;
+  }
+}

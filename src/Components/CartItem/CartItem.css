@@ -1,49 +1,68 @@
-.item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    background-color: #1E1E27;
-    border-radius: 10px;
-    padding: 10px 15px 10px 10px;
-    color: #9CADB9;
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  background-color: #1e1e27;
+  border-radius: 10px;
+  padding: 10px 15px 10px 10px;
+  color: #9cadb9;
 }
-.item img{
-    width: 80px;
-    border-radius: 10px;
-    object-fit: cover;
+.item img {
+  width: 80px;
+  border-radius: 10px;
+  object-fit: cover;
 }
-.cart-info{
-    text-align: center;
+.cart-info {
+  text-align: center;
 }
-.cart-info p{
-    font-weight: 500;
-    margin-bottom: 5px;
+.cart-info p {
+  font-weight: 500;
+  margin-bottom: 5px;
 }
-.cart-info h4{
-    font-size: 20px;
-    font-weight: 600;
+.cart-info h4 {
+  font-size: 20px;
+  font-weight: 600;
 }
-.delete-btn button{
-    background: #EEBF0E;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    font-size: 21px;
-    height: 45px;
-    color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+.delete-btn button {
+  background: #eebf0e;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  font-size: 21px;
+  height: 45px;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.delete-btn p{
-    width: 30px;
-    height: 30px;
-    background-color: #EEBF0E;
-    color: #000;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.delete-btn p {
+  width: 30px;
+  height: 30px;
+  background-color: #eebf0e;
+  color: #000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  .item {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .item {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .item {
+    width: 100%;
+  }
 }

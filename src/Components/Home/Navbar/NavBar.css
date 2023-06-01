@@ -28,7 +28,7 @@
   gap: 5rem;
 }
 
-.nav-container img {
+img.logo {
   width: 180px;
 }
 
@@ -96,6 +96,7 @@ li.user-icon {
   flex-direction: column;
   gap: 0.5rem;
   border-radius: 4px;
+  z-index: 100;
 }
 
 .user-profile {
@@ -196,13 +197,37 @@ img.arrow {
 }
 
 @media only screen and (max-width: 750px) {
-  .nav-container img {
+  img.logo {
     width: 160px;
+  }
+  li.user-icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 0.3rem;
+  }
+  .user-settings {
+    width: 280px;
+    z-index: 100;
+  }
+  .setting-links span img {
+    width: 40px;
+  }
+  .setting-links span {
+    gap: 0.5rem;
+  }
+  img.arrow {
+    width: 10px;
+  }
+  .user-settings button {
+    margin: 15px 0 0px;
+  }
+  .setting-menu-inner {
+    padding: 15px;
   }
 }
 
 @media only screen and (max-width: 470px) {
-  .nav-container img {
+  img.logo {
     width: 150px;
   }
 }

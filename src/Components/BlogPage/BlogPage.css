@@ -21,3 +21,47 @@ p.blog-page {
   color: #9cadb9;
   font-weight: 300;
 }
+
+/* Responsive */
+@media screen and (max-width: 1300px) {
+  .all-blogs {
+    width: 85%;
+  }
+  .blog-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .all-blogs {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .all-blogs {
+    width: 95%;
+  }
+  .blog-card {
+    gap: 1rem;
+  }
+  .author {
+    transform: translateY(-34px);
+  }
+  .blog-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .blog-degi {
+    gap: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h2.blog-page {
+    font-size: 25px;
+  }
+  p.blog-page {
+    font-size: 13px;
+    margin: 0.3rem 0;
+  }
+}

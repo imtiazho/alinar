@@ -85,7 +85,7 @@ const NavBar = () => {
       <UpperNav />
       <div className="nav-container">
         <Link to="/">
-          <img src={logo} alt="" />
+          <img className="logo" src={logo} alt="" />
         </Link>
 
         <div className="menu-log-cart">

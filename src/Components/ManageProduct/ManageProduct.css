@@ -1,8 +1,17 @@
 .manage-product {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 80%;
   margin: 5rem auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .place-order-btn {
+    margin: 0rem auto;
+  }
+  .manage-product {
+    width: 95%;
+  }
 }

@@ -4,9 +4,9 @@
   gap: 1rem;
 }
 
-.my-order .order-preview .each-row {
+/* .my-order .order-preview .each-row {
   gap: 2rem;
-}
+} */
 
 span.my-order-divider {
   border: 0.4px solid #2b2b2b;
@@ -28,9 +28,21 @@ span.img-row {
 .button-grp {
   display: flex;
   align-items: center;
+  gap: 2rem;
 }
 
 p.confirm-text {
   margin: 2rem 0;
   color: #06b20a;
+}
+
+/* Responsive */
+@media screen and (max-width: 950px) {
+  .button-grp {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .confirm-order-btn {
+    gap: 0;
+  }
 }

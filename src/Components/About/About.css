@@ -3,12 +3,16 @@
   margin: 3rem auto;
 }
 
+.shop-button {
+  display: flex;
+  justify-content: start;
+}
+
 .about img {
   display: block;
   margin: 3rem auto;
-  padding: 0 200px;
+  padding: 0 200px 50px 200px;
   border-bottom: 3px dashed #414141;
-  padding-bottom: 50px;
 }
 
 .about-text {
@@ -70,4 +74,68 @@
   font-weight: 400;
   cursor: pointer;
   width: fit-content;
+}
+
+/* Responsive  */
+@media screen and (max-width: 1200px) {
+  .about {
+    width: 80%;
+  }
+  .about img {
+    margin: 2.5rem auto;
+    padding: 0 150px 50px 150px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .about {
+    width: 90%;
+  }
+  .about img {
+    margin: 2rem auto;
+    padding: 0 130px 50px 130px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .about {
+    width: 95%;
+  }
+  .about img {
+    margin: 1.5rem auto;
+    padding: 0 110px 50px 110px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .about img {
+    margin: 1rem auto;
+    padding: 0 100px 30px 100px;
+  }
+  .about-text p {
+    line-height: 25px;
+    text-align: center;
+  }
+  .about-text h2 {
+    text-align: center;
+  }
+  .social-media {
+    text-align: center;
+    margin: 2rem 0 3rem 0;
+  }
+  .social-icon {
+    justify-content: center;
+  }
+  .shop-button {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about img {
+    padding: 0 60px 25px 60px;
+  }
+  .about-text p {
+    line-height: 23px;
+  }
 }

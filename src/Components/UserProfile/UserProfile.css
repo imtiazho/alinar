@@ -64,3 +64,57 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+/* Responsive */
+@media screen and (max-width: 1200px) {
+  #dash-board .container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  #dash-board .container {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #dash-board .container .left-side {
+    position: static;
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #dash-board .container .left-side {
+    width: 70%;
+  }
+  #dash-board .container .right-side .listing-on-rent {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #dash-board .container .right-side .listing-on-rent {
+    padding: 0rem;
+  }
+  .each-row h4 {
+    font-size: 20px;
+  }
+  .my-order .order-preview .each-row {
+    gap: 1rem;
+  }
+  .my-order .order-preview .each-row p,
+  p.confirm-text {
+    font-size: 14px;
+    font-weight: 300;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #dash-board .container .left-side {
+    width: 80%;
+  }
+  .my-order .order-preview .each-row {
+    gap: 0.5rem;
+  }
+}
