@@ -17,7 +17,7 @@ const Sharee = () => {
 
   return (
     <div className="common-product-section">
-      {sharees.slice(0, 3).map((product) => (
+      {sharees.slice(0, 3)?.map((product) => (
         <ProductCard key={product._id} product={product}></ProductCard>
       ))}
     </div>

@@ -6,17 +6,15 @@ import { FaBars, FaUserAlt } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import logo from "../../../assets/logo.png";
-import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
 import anonymousUser from "../../../assets/anonymous_user.png";
 import { toast } from "react-hot-toast";
 import { CartContext } from "../../../App";
 import { getStoredCart } from "../../../LocalStorage/ManageLocalStorage";
-import Spinner from "../../Spinner/Spinner";
 import logout from '../../../assets/logout.png';
 import arrow from '../../../assets/arrow.png'
-import { useQuery } from "react-query";
+import { useAuthState } from "react-firebase-hooks/auth";
 import useAdmin from "../../../Hooks/useAdmin";
 
 const NavBar = () => {
@@ -27,14 +25,12 @@ const NavBar = () => {
   const { cartState, shippingInfoState } = useContext(CartContext);
   const [cart, setCart] = cartState;
   const storedCart = getStoredCart();
+  const [userData, setUserData] = useState([]);
   const [admin, setAdmin] = useAdmin(user);
-  const {
-    isLoading,
-    userError,
-    data,
-  } = useQuery("user", () =>
-    fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then((res) => res.json())
-  );
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then(res => res.json()).then(data => setUserData(data))
+  }, [user?.email])
 
   const menuItems = (
     <>
@@ -103,13 +99,13 @@ const NavBar = () => {
 
             {user ? (
               <li onClick={() => setuserSettingOpen(!userSettingOpen)} className="user-icon">
-                <img src={data ? data.userImage : anonymousUser} alt="" />
+                <img src={userData ? userData.userImage : anonymousUser} alt="" />
 
                 {userSettingOpen && (
                   <div className="user-settings">
                     <div className="setting-menu-inner">
                       <div className="user-profile">
-                        <img src={data?.userImage || anonymousUser} alt="" />
+                        <img src={userData?.userImage || anonymousUser} alt="" />
                         <div>
                           <p>{user.displayName ? user.displayName : 'Anonymous User'}</p>
                           <p><Link onClick={() => setuserSettingOpen(!userSettingOpen)} to='/userprofile'>See your Profile</Link></p>

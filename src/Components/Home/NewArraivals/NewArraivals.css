@@ -71,6 +71,12 @@ h2.sention-title p {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .items-short-nav div a {
+    font-size: 14px;
+  }
+}
+
 @media screen and (max-width: 550px) {
   .new-arrivals-container {
     width: 95%;

@@ -4,7 +4,6 @@ import { createContext, useState } from "react";
 import HomeMain from "./Components/Home/HomeMain/HomeMain";
 import Sharee from "./Components/Home/Sharee/Sharee";
 import ThreePis from "./Components/Home/ThreePis/ThreePis";
-import NavBar from "./Components/Home/Navbar/NavBar";
 import Footer from "./Components/Home/Footer/Footer";
 import ShareeDetails from "./Components/Home/Sharee/ShareeDetails";
 import ThreePisDetails from "./Components/Home/ThreePis/ThreePisDetails";
@@ -16,13 +15,11 @@ import { Toaster } from "react-hot-toast";
 import About from "./Components/About/About";
 import Shop from "./Components/Shop/Shop";
 import ShopProductDetails from "./Components/Shop/ShopProductDetails";
-import BestSellingProductsDetails from "./Components/Home/BestSellingProduct/BestSellingProductsDetails";
 import Cart from "./Components/Cart/Cart";
 import ShipingInfo from "./Components/ShipingInfo/ShipingInfo";
 import ConfirmOrder from "./Components/ConfirmOrder/ConfirmOrder";
 import BlogDetails from "./Components/BlogDetails/BlogDetails";
 import BlogPage from "./Components/BlogPage/BlogPage";
-import Spinner from "./Components/Spinner/Spinner";
 import TermsAndPrivacy from "./Components/TermsAndPrivacy/TermsAndPrivacy";
 import RequireAuth from "./RequireAuth/RequireAuth";
 import UserProfile from "./Components/UserProfile/UserProfile";
@@ -36,6 +33,7 @@ import AddNewProduct from "./Components/AddNewProduct/AddNewProduct";
 import UploadSharee from "./Components/UploadSharee/UploadSharee";
 import UploadThreePis from "./Components/UploadThreePis/UploadThreePis";
 import UploadAbaya from "./Components/UploadAbaya/UploadAbaya";
+import NavBar from "./Components/Home/Navbar/NavBar";
 
 export const CartContext = createContext();
 
@@ -72,10 +70,6 @@ function App() {
         <Route
           path="/shopProductDetail/:shopProductDetailsId"
           element={<ShopProductDetails />}
-        ></Route>
-        <Route
-          path="/bestSellingProduct/:bestSellingProductDetailsId"
-          element={<BestSellingProductsDetails />}
         ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>

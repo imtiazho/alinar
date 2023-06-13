@@ -24,8 +24,8 @@ const NewArraivals = () => {
         <button
           className={
             storedCart.length > 0
-              ? "place-order-btn"
-              : "place-order-btn-disabled"
+              ? "btn-2"
+              : "btn-2-disabled"
           }
           disabled
         >

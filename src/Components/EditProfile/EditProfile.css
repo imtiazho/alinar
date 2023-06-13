@@ -13,6 +13,7 @@
 
 .left-side .profile h3 {
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .left-side .profile input#add-photo-btn {
@@ -31,4 +32,40 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+}
+
+/* Responsive  */
+@media screen and (max-width: 1200px) {
+  .edit-profile-inner {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .edit-profile-inner {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .edit-profile-inner {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .edit-profile-inner {
+    width: 90%;
+  }
+  .left-side .profile .profile-area {
+    width: 150px;
+    height: 150px;
+  }
+  .left-side .profile h3 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .left-side .profile .profile-area label {
+    font-size: 13px;
+  }
 }

@@ -126,7 +126,7 @@ const ConfirmOrder = () => {
         </span>
       </div>
 
-      <button onClick={handleConfirmOrder} className="confirm-order-btn">
+      <button onClick={handleConfirmOrder} className="btn-2">
         Confirm Order
       </button>
     </div>

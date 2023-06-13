@@ -55,9 +55,41 @@ const Login = () => {
     }
   };
 
+  if (googleUser) {
+    const emailToToken = googleUser.email
+    fetch('http://localhost:5000/jwtTokenGenerator', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ emailToToken })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("accessToken", data.token)
+        }
+      })
+  }
+
   const handleForm = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
+
+    const emailToToken = userInfo.email
+    fetch('http://localhost:5000/jwtTokenGenerator', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ emailToToken })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("accessToken", data.token)
+        }
+      })
   };
 
   useEffect(() => {
@@ -65,7 +97,7 @@ const Login = () => {
       toast.success("Login successfully!");
       navigate(from, { replace: true });
     }
-  }, [hookUser, googleUser, navigate, from]);
+  }, [hookUser, googleUser, navigate, from, userInfo.email, userInfo.password]);
 
   useEffect(() => {
     const dbError = hookError || googleError;

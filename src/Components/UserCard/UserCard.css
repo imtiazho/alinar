@@ -20,7 +20,7 @@
 }
 
 .btn-grp button {
-  padding: 10px;
+  padding: 6px 15px;
   cursor: pointer;
   font-size: 13px;
   border-radius: 25px;
@@ -47,8 +47,15 @@
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
   .user-card {
     padding: 10px;
+  }
+  .user-card p {
+    font-size: 14px;
+  }
+  .user-card img {
+    width: 60px;
+    height: 60px;
   }
 }

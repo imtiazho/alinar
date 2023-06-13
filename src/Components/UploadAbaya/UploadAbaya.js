@@ -2,8 +2,18 @@ import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import './UploadAbaya.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../Firebase/Firebase.init';
+import { signOut } from 'firebase/auth';
 
 const UploadAbaya = () => {
+    const [user, loading, UserError] = useAuthState(auth);
+    const [serverStatus, setServerStatus] = useState(200);
+    const handleSignOut = () => {
+        signOut(auth);
+        navigate("/login");
+        // toast.success("Something is wrong login again!");
+    };
     const navigate = useNavigate();
     const [imageFile, setImageFile] = useState("");
     const [uploadProductInfo, setUploadProductInfo] = useState({
@@ -123,6 +133,7 @@ const UploadAbaya = () => {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',
+                                authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
                             },
                             body: JSON.stringify({
                                 handCodedId: "abaya",
@@ -151,7 +162,13 @@ const UploadAbaya = () => {
                                 note: null
                             })
                         })
-                            .then(res => res.json())
+                            .then(res => {
+                                setServerStatus(res.status);
+                                if (res.status === 401 || res.status === 403) {
+                                    handleSignOut();
+                                }
+                                return res.json()
+                            })
                             .then(result => {
                                 if (result.acknowledged) {
                                     toast.success("Uploaded baya succesfully");

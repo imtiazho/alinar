@@ -77,7 +77,7 @@ const CartCalculation = ({ storedCart }) => {
 
       <button
         className={
-          storedCart.length > 0 ? "place-order-btn" : "place-order-btn-disabled"
+          storedCart.length > 0 ? "btn-2" : "btn-2-disabled"
         }
         disabled={storedCart.length < 1}
         onClick={finalCalculating}

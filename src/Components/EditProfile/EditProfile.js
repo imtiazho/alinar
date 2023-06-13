@@ -53,7 +53,7 @@ const EditProfile = () => {
                         </div>
                     </div>
 
-                    <button className='place-order-btn'>Save</button>
+                    <button className='btn-2'>Save</button>
                 </form>
             </div>
         </div >

@@ -1,29 +1,59 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-hot-toast';
 import { useQuery } from 'react-query';
 import auth from '../../Firebase/Firebase.init';
 import MyOrderCard from '../MyOrderCard/MyOrderCard';
 import Spinner from '../Spinner/Spinner';
+import { useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
 
 const AllOrders = () => {
+    const [user, loading, UserError] = useAuthState(auth);
+    const navigate = useNavigate();
+    const [serverStatus, setServerStatus] = useState(200);
+    const [data, setData] = useState([]);
+
+    const handleSignOut = () => {
+        signOut(auth);
+        navigate("/login");
+        // toast.success("Something is wrong login again!");
+    };
+
+    useEffect(() => {
+        fetch("http://localhost:5000/allOrders", {
+            headers: {
+                authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => {
+            setServerStatus(res.status);
+            if (res.status === 401 || res.status === 403) {
+                handleSignOut();
+            }
+            return res.json()
+        }).then(data => setData(data))
+    }, [user])
+
+    // const {
+    //     isLoading,
+    //     error,
+    //     data,
+    // } = useQuery("ordersData", () =>
+    //     fetch("http://localhost:5000/allOrders", {
+    //         headers: {
+    //             authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+    //         }
+    //     }).then((res) => res.json())
+    // );
     const {
-        isLoading,
+        isLoading: allProLoad,
         error,
-        data,
-    } = useQuery("ordersData", () =>
-        fetch("http://localhost:5000/allOrders").then((res) => res.json())
-    );
-    const {
-        DisLoading,
-        Derror,
         data: allProducts,
     } = useQuery("Data", () =>
         fetch("http://localhost:5000/allProducts").then((res) => res.json())
     );
 
-    console.log(allProducts)
-    if (isLoading || DisLoading) {
+    if (!serverStatus === 200 || allProLoad) {
         return <Spinner />;
     }
 
@@ -32,10 +62,19 @@ const AllOrders = () => {
         if (confrimToDelete) {
             fetch(`http://localhost:5000/order/${id}`, {
                 method: "DELETE",
+                headers: {
+                    authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+                }
             })
-                .then((response) => response.json())
+                .then((res) => {
+                    setServerStatus(res.status);
+                    if (res.status === 401 || res.status === 403) {
+                        handleSignOut();
+                    }
+                    return res.json()
+                })
                 .then((data) => {
-                    if (data.deletedCount > 0) {
+                    if (data?.deletedCount > 0) {
                         toast.success('Order Canceled!');
                     }
                 });
@@ -47,8 +86,17 @@ const AllOrders = () => {
         if (confrimToAccept) {
             fetch(`http://localhost:5000/order/${id}`, {
                 method: "PUT",
+                headers: {
+                    authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+                }
             })
-                .then(res => res.json())
+                .then(res => {
+                    setServerStatus(res.status);
+                    if (res.status === 401 || res.status === 403) {
+                        handleSignOut();
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     if (data.modifiedCount > 0) {
                         toast.success('Order confirmed');
@@ -66,12 +114,19 @@ const AllOrders = () => {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json',
+                    authorization: `${user?.email} ${localStorage.getItem('accessToken')}`,
                 },
                 body: JSON.stringify({
                     delivered: deliveredCount
                 })
             })
-                .then(res => res.json())
+                .then(res => {
+                    setServerStatus(res.status);
+                    if (res.status === 401 || res.status === 403) {
+                        handleSignOut();
+                    }
+                    return res.json()
+                })
                 .then(data => {
                     if (data.modifiedCount > 0) {
                         toast.success('Delivered Successfully');
@@ -81,11 +136,13 @@ const AllOrders = () => {
 
     }
 
-    return (
-        <div className='all-my-order'>
-            {data?.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} handleConfirmOrder={handleConfirmOrder} handleDeliveryCounter={handleDeliveryCounter} key={eachOrder._id} />)}
-        </div>
-    );
+    if (serverStatus === 200) {
+        return (
+            <div className='all-my-order'>
+                {data?.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} handleConfirmOrder={handleConfirmOrder} handleDeliveryCounter={handleDeliveryCounter} key={eachOrder._id} />)}
+            </div>
+        );
+    }
 };
 
 export default AllOrders;

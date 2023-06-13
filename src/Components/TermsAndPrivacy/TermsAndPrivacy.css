@@ -42,3 +42,28 @@
 #main-details .privacy-terms-container h3 {
   font-weight: 500;
 }
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  #main-details .privacy-terms-container,
+  .privacy-terms-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #main-details .privacy-terms-container div p {
+    font-size: 15px;
+    font-weight: 300;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #main-details .privacy-terms-container {
+    padding: 1.5rem;
+    margin: 2rem auto 4rem auto;
+  }
+  #top-banner {
+    height: 30vh;
+  }
+}

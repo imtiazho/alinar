@@ -41,7 +41,7 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder, handleDel
         </span>
 
         <span className="img-row">
-          {productImg.map((eachProductImage, index) => (
+          {productImg?.map((eachProductImage, index) => (
             <img key={index} src={eachProductImage} alt="" />
           ))}
         </span>
@@ -87,7 +87,7 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder, handleDel
               <p className="confirm-text">✓ This order is accepted by Admin</p> :
               <button
                 onClick={() => handleDeleteOne(_id)}
-                className="confirm-order-btn"
+                className="btn-2"
               >
                 Cancel Order
               </button>}
@@ -99,21 +99,21 @@ const MyOrderCard = ({ eachOrder, handleDeleteOne, handleConfirmOrder, handleDel
         {admin && <div className="button-grp">
           {orderStatus ? <p className="confirm-text">✓ This order is accepted by Admin</p> : <button
             onClick={() => handleConfirmOrder(_id)}
-            className="confirm-order-btn"
+            className="btn-2"
           >
             Accept Order
           </button>}
 
           <button
             onClick={() => handleDeleteOne(_id)}
-            className="confirm-order-btn"
+            className="btn-2"
           >
             Delete This Order
           </button>
 
           <button
             onClick={() => handleDeliveryCounter(...productName)}
-            className="confirm-order-btn"
+            className="btn-2"
           >
             Delivered Successfully
           </button>

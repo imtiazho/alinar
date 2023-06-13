@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './MyOrders.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
@@ -6,20 +6,63 @@ import auth from '../../Firebase/Firebase.init';
 import MyOrderCard from '../MyOrderCard/MyOrderCard';
 import Spinner from '../Spinner/Spinner';
 import { toast } from 'react-hot-toast';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const MyOrders = () => {
     const [user, loading, UserError] = useAuthState(auth);
-    const {
-        isLoading,
-        error,
-        data,
-    } = useQuery("myOrdersData", () =>
-        fetch(`http://localhost:5000/orders?email=${user.email}`).then((res) => res.json())
-    );
+    const navigate = useNavigate();
+    const [serverStatus, setServerStatus] = useState(200);
+    const [data, setData] = useState([]);
+    console.log(serverStatus)
 
-    if (isLoading) {
+    const handleSignOut = () => {
+        signOut(auth);
+        navigate("/login");
+        // toast.success("Something is wrong login again!");
+    };
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+            headers: {
+                authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+            }
+        }).then(res => {
+            setServerStatus(res.status);
+            if (res.status === 401 || res.status === 403) {
+                handleSignOut();
+            }
+            return res.json()
+        }).then(data => setData(data))
+    }, [user?.email])
+
+    // const {
+    //     isLoading,
+    //     error,
+    //     data,
+    // } = useQuery("myOrdersData", () =>
+    //     fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+    //         headers: {
+    //             authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+    //         }
+    //     }).then((res) => {
+    //         setServerStatus(res.status);
+    //         if (res.status === 401 || res.status === 403) {
+    //             handleSignOut();
+    //         }
+    //         return res.json()
+    //     })
+    // );
+
+
+    // if (isLoading || !serverStatus === 200) {
+    //     return <Spinner />;
+    // }
+
+    if (!serverStatus === 200) {
         return <Spinner />;
     }
+
 
     const handleDeleteOne = (id) => {
         const confrimToDelete = window.confirm("Are you confirm to delete?");
@@ -35,11 +78,13 @@ const MyOrders = () => {
                 });
         }
     };
-    return (
-        <div className='all-my-order'>
-            {data.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} key={eachOrder._id} />)}
-        </div>
-    );
+    if (serverStatus === 200) {
+        return (
+            <div className='all-my-order'>
+                {data?.map((eachOrder) => <MyOrderCard eachOrder={eachOrder} handleDeleteOne={handleDeleteOne} key={eachOrder._id} />)}
+            </div>
+        );
+    }
 };
 
 export default MyOrders;

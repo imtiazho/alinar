@@ -78,9 +78,39 @@ const SignUp = () => {
     }
   };
 
+  if (googleUser) {
+    const emailToToken = googleUser.email
+    fetch('http://localhost:5000/jwtTokenGenerator', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ emailToToken })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("accessToken", data.token)
+        }
+      })
+  }
+
   const handleForm = async (e) => {
     e.preventDefault();
-
+    const emailToToken = userInfo.email
+    fetch('http://localhost:5000/jwtTokenGenerator', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ emailToToken })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("accessToken", data.token)
+        }
+      })
     if (userInfo.name || userInfo.password || userInfo.confirmPassword || userInfo.email) {
       await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
       await updateProfile({ displayName: userInfo.name });
