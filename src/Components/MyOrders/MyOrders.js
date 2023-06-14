@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './MyOrders.css';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useQuery } from 'react-query';
 import auth from '../../Firebase/Firebase.init';
 import MyOrderCard from '../MyOrderCard/MyOrderCard';
 import Spinner from '../Spinner/Spinner';
@@ -14,7 +13,6 @@ const MyOrders = () => {
     const navigate = useNavigate();
     const [serverStatus, setServerStatus] = useState(200);
     const [data, setData] = useState([]);
-    console.log(serverStatus)
 
     const handleSignOut = () => {
         signOut(auth);
@@ -36,29 +34,6 @@ const MyOrders = () => {
         }).then(data => setData(data))
     }, [user?.email])
 
-    // const {
-    //     isLoading,
-    //     error,
-    //     data,
-    // } = useQuery("myOrdersData", () =>
-    //     fetch(`http://localhost:5000/orders?email=${user?.email}`, {
-    //         headers: {
-    //             authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
-    //         }
-    //     }).then((res) => {
-    //         setServerStatus(res.status);
-    //         if (res.status === 401 || res.status === 403) {
-    //             handleSignOut();
-    //         }
-    //         return res.json()
-    //     })
-    // );
-
-
-    // if (isLoading || !serverStatus === 200) {
-    //     return <Spinner />;
-    // }
-
     if (!serverStatus === 200) {
         return <Spinner />;
     }
@@ -69,8 +44,17 @@ const MyOrders = () => {
         if (confrimToDelete) {
             fetch(`http://localhost:5000/order/${id}`, {
                 method: "DELETE",
+                headers: {
+                    authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
+                }
             })
-                .then((response) => response.json())
+                .then((res) => {
+                    setServerStatus(res.status);
+                    if (res.status === 401 || res.status === 403) {
+                        handleSignOut();
+                    }
+                    return res.json()
+                })
                 .then((data) => {
                     if (data.deletedCount > 0) {
                         toast.success('Order Canceled!')
