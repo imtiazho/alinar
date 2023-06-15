@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './BlogCard.css'
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, index }) => {
     const { id, img, title, shortDecs } = blog;
     return (
-        <div className='blog-card'>
+        <div data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} data-aos-duration="1000" className='blog-card'>
             <img src={img} alt="" />
             <div className='author'>
                 <div className='blog-degi'>

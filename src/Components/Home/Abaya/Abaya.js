@@ -19,8 +19,8 @@ const Abaya = () => {
 
   return (
     <div className="common-product-section">
-      {abayas.slice(0, 3)?.map((product) => (
-        <ProductCard key={product._id} product={product}></ProductCard>
+      {abayas.slice(0, 3)?.map((product, index) => (
+        <ProductCard key={product._id} product={product} index={index}></ProductCard>
       ))}
     </div>
   );

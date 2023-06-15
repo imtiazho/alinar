@@ -9,7 +9,7 @@ const LatestBlog = ({ blogsDatas }) => {
             <h2 className='sention-title'> <p>Alinar</p>LATEST BLOGS</h2>
             <div className='latest-blog-container'>
                 {
-                    blogsDatas?.map(blog => <BlogCard blog={blog} key={blog.id} />)
+                    blogsDatas?.map((blog, index) => <BlogCard blog={blog} key={blog.id} index={index} />)
                 }
             </div>
         </div>

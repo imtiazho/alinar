@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, index }) => {
   const {
     _id,
     handCodedId,
@@ -29,8 +33,8 @@ const ProductCard = ({ product }) => {
     dupattaMaterial,
     category,
   } = product;
-
   let path;
+
   if (handCodedId?.includes("sharee")) {
     path = "shareeDetails";
   } else if (handCodedId?.includes("abaya")) {
@@ -42,7 +46,7 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <Link to={`/${path}/${_id}`} className="product-card">
+    <Link data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} data-aos-duration="1000" to={`/${path}/${_id}`} className="product-card">
       <img src={img} alt="" />
 
       <div className="product-short-info">

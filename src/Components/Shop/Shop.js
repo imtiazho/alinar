@@ -23,8 +23,8 @@ const Shop = () => {
         </div>
 
         <div className="shop-container">
-          {data.filter(product => product.handCodedId.toLowerCase().includes(query)).map((product) => (
-            <ProductCard product={product} key={product._id}></ProductCard>
+          {data.filter(product => product.handCodedId.toLowerCase().includes(query)).map((product, index) => (
+            <ProductCard index={index} product={product} key={product._id}></ProductCard>
           ))}
         </div>
       </div>

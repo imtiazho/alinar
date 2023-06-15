@@ -17,8 +17,8 @@ const ThreePis = () => {
 
   return (
     <div className="common-product-section">
-      {threePises.slice(0, 3)?.map((product) => (
-        <ProductCard product={product} key={product._id}></ProductCard>
+      {threePises.slice(0, 3)?.map((product, index) => (
+        <ProductCard product={product} key={product._id} index={index}></ProductCard>
       ))}
     </div>
   );

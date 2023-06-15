@@ -12,8 +12,8 @@ const BestSellingProduct = ({ bestSellingPro }) => {
         <p>Alinar</p> BEST SELLING PRODUCT
       </h2>
       <div className="common-product-section">
-        {bestSellingPro?.map((product) => (
-          <ProductCard product={product} key={product._id}></ProductCard>
+        {bestSellingPro?.map((product, index) => (
+          <ProductCard product={product} key={product._id} index={index}></ProductCard>
         ))}
       </div>
     </div>

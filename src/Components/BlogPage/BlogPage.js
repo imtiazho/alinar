@@ -18,7 +18,7 @@ const BlogPage = () => {
 
             <div className='blog-container'>
                 {
-                    blogsDatas?.map(blog => <BlogCard blog={blog} key={blog.id} />)
+                    blogsDatas?.map((blog, index) => <BlogCard index={index} blog={blog} key={blog.id} />)
                 }
             </div>
         </div>
