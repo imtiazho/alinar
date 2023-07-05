@@ -12,15 +12,15 @@ const Depertment = () => {
     return (
         <div className='depertment'>
             <div className='depertment-container'>
-                <div data-aos="fade-up-right" data-aos-duration="1000" className='each-depertment'>
+                <div data-aos="fade-up" data-aos-duration="1000" className='each-depertment'>
                     <img src={depertmentImg1} alt="Picture of sell Depertment" />
                     {/* <h4>SHAREE</h4> */}
                 </div>
-                <div data-aos="fade-up-left" data-aos-duration="1000" className='each-depertment'>
+                <div data-aos="fade-up" data-aos-duration="1000" className='each-depertment'>
                     <img src={depertmentImg2} alt="Picture of sell Depertment" />
                     {/* <h4>PANJABI</h4> */}
                 </div>
-                <div data-aos="fade-up-right" data-aos-duration="1000" className='each-depertment'>
+                <div data-aos="fade-up" data-aos-duration="1000" className='each-depertment'>
                     <img src={depertmentImg3} alt="Picture of sell Depertment" />
                     {/* <h4>3 PIS</h4> */}
                 </div>

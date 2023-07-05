@@ -5,7 +5,7 @@ import './BlogCard.css'
 const BlogCard = ({ blog, index }) => {
     const { id, img, title, shortDecs } = blog;
     return (
-        <div data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} data-aos-duration="1000" className='blog-card'>
+        <div data-aos={index % 2 === 0 ? "fade-up" : "fade-up"} data-aos-duration="1000" className='blog-card'>
             <img src={img} alt="" />
             <div className='author'>
                 <div className='blog-degi'>

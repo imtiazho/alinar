@@ -46,7 +46,7 @@ const ProductCard = ({ product, index }) => {
   }
 
   return (
-    <Link data-aos={index % 2 === 0 ? "fade-right" : "fade-left"} data-aos-duration="1000" to={`/${path}/${_id}`} className="product-card">
+    <Link data-aos={index % 2 === 0 ? "fade-up" : "fade-up"} data-aos-duration="1000" to={`/${path}/${_id}`} className="product-card">
       <img src={img} alt="" />
 
       <div className="product-short-info">
