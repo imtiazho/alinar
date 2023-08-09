@@ -18,7 +18,7 @@ const UserProfile = () => {
         userError,
         data,
     } = useQuery("user", () =>
-        fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then((res) => res.json())
+        fetch(`http://server.alinarbd.com/user?userEmail=${user?.email}`).then((res) => res.json())
     );
 
     if (loading || isLoading) {

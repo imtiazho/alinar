@@ -80,7 +80,7 @@ const SignUp = () => {
 
   if (googleUser) {
     const emailToToken = googleUser.email
-    fetch('http://localhost:5000/jwtTokenGenerator', {
+    fetch('http://server.alinarbd.com/jwtTokenGenerator', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -98,7 +98,7 @@ const SignUp = () => {
   const handleForm = async (e) => {
     e.preventDefault();
     const emailToToken = userInfo.email
-    fetch('http://localhost:5000/jwtTokenGenerator', {
+    fetch('http://server.alinarbd.com/jwtTokenGenerator', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -114,7 +114,7 @@ const SignUp = () => {
     if (userInfo.name || userInfo.password || userInfo.confirmPassword || userInfo.email) {
       await createUserWithEmailAndPassword(userInfo.email, userInfo.password);
       await updateProfile({ displayName: userInfo.name });
-      fetch(`http://localhost:5000/user/${userInfo.email}`, {
+      fetch(`http://server.alinarbd.com/user/${userInfo.email}`, {
         method: 'PUT',
         headers: {
           'content-type': 'application/json',

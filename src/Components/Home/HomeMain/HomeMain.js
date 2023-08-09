@@ -21,7 +21,7 @@ const HomeMain = () => {
 
     // Here fetching best selling product
     const { isLoading: bsLoading, error: bsError, data: bsData } = useQuery("bestSellingProduct", () =>
-        fetch("http://localhost:5000/allProducts").then((res) => res.json())
+        fetch("http://server.alinarbd.com/allProducts").then((res) => res.json())
     );
 
     // Here fetching blogs data

@@ -12,7 +12,7 @@ const BlogCard = ({ blog, index }) => {
                     <i className="fa-regular fa-circle-user"></i>
                     <p>by Admin</p>
                 </div>
-
+                {/*  */}
                 <div className='blog-degi'>
                     <i className="fa-regular fa-message"></i>
                     <p>1 Commnets</p>

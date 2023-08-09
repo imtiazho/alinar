@@ -25,7 +25,7 @@ const EditProfile = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    fetch(`http://localhost:5000/user/${user.email}`, {
+                    fetch(`http://server.alinarbd.com/user/${user.email}`, {
                         method: 'PUT',
                         headers: {
                             'content-type': 'application/json',

@@ -9,7 +9,7 @@ const ThreePis = () => {
     error,
     data: threePises,
   } = useQuery("threePisData", () =>
-    fetch("http://localhost:5000/threePises/threePis").then((res) => res.json())
+    fetch("http://server.alinarbd.com/threePises/threePis").then((res) => res.json())
   );
   if (isLoading) {
     return <Spinner />;

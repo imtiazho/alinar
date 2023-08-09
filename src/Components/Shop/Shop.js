@@ -8,7 +8,7 @@ import HelmetComponent from "../HelmetComponent/HelmetComponent";
 const Shop = () => {
   const [query, setQuery] = useState("");
   const { isLoading, error, data } = useQuery("bestSellingProduct", () =>
-    fetch("http://localhost:5000/allProducts").then((res) => res.json())
+    fetch("http://server.alinarbd.com/allProducts").then((res) => res.json())
   );
 
   if (isLoading) {

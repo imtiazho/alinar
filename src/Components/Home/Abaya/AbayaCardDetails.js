@@ -8,7 +8,7 @@ const AbayaCardDetails = () => {
   const { abayaDetailsId } = useParams();
 
   const { isLoading, error, data } = useQuery("abaya", () =>
-    fetch(`http://localhost:5000/abaya/${abayaDetailsId}`).then((res) =>
+    fetch(`http://server.alinarbd.com/abaya/${abayaDetailsId}`).then((res) =>
       res.json()
     )
   );

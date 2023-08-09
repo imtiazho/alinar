@@ -10,7 +10,7 @@ const Abaya = () => {
     error,
     data: abayas,
   } = useQuery("abayaData", () =>
-    fetch("http://localhost:5000/abayas/abaya").then((res) => res.json())
+    fetch("http://server.alinarbd.com/abayas/abaya").then((res) => res.json())
   );
 
   if (isLoading) {

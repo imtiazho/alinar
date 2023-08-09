@@ -22,7 +22,7 @@ const AllUsers = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:5000/users", {
+        fetch("http://server.alinarbd.com/users", {
             headers: {
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
@@ -40,7 +40,7 @@ const AllUsers = () => {
     //     error,
     //     data: users,
     // } = useQuery("usersData", () =>
-    //     fetch("http://localhost:5000/users").then((res) => res.json())
+    //     fetch("http://server.alinarbd.com/users").then((res) => res.json())
     // );
 
     if (!serverStatus === 200) {
@@ -50,7 +50,7 @@ const AllUsers = () => {
     const handleMakeModerator = (userEmail) => {
         const confirmationToMakeModerator = window.confirm("Are you sure to make moderator?");
         if (confirmationToMakeModerator) {
-            fetch(`http://localhost:5000/userTomoderator/${userEmail}`, {
+            fetch(`http://server.alinarbd.com/userTomoderator/${userEmail}`, {
                 method: "PUT",
             })
                 .then(res => res.json())

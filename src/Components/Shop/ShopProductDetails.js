@@ -8,7 +8,7 @@ const ShopProductDetails = () => {
   const { shopProductDetailsId } = useParams();
 
   const { isLoading, error, data } = useQuery("shopProducts", () =>
-    fetch(`http://localhost:5000/allProducts/${shopProductDetailsId}`).then(
+    fetch(`http://server.alinarbd.com/allProducts/${shopProductDetailsId}`).then(
       (res) => res.json()
     )
   );

@@ -21,7 +21,7 @@ const MyOrders = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        fetch(`http://server.alinarbd.com/orders?email=${user?.email}`, {
             headers: {
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
@@ -42,7 +42,7 @@ const MyOrders = () => {
     const handleDeleteOne = (id) => {
         const confrimToDelete = window.confirm("Are you confirm to delete?");
         if (confrimToDelete) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`http://server.alinarbd.com/order/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `${user?.email} ${localStorage.getItem('accessToken')}`

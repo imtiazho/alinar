@@ -21,7 +21,7 @@ const AllOrders = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:5000/allOrders", {
+        fetch("http://server.alinarbd.com/allOrders", {
             headers: {
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
@@ -39,7 +39,7 @@ const AllOrders = () => {
     //     error,
     //     data,
     // } = useQuery("ordersData", () =>
-    //     fetch("http://localhost:5000/allOrders", {
+    //     fetch("http://server.alinarbd.com/allOrders", {
     //         headers: {
     //             authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
     //         }
@@ -50,7 +50,7 @@ const AllOrders = () => {
         error,
         data: allProducts,
     } = useQuery("Data", () =>
-        fetch("http://localhost:5000/allProducts").then((res) => res.json())
+        fetch("http://server.alinarbd.com/allProducts").then((res) => res.json())
     );
 
     if (!serverStatus === 200 || allProLoad) {
@@ -60,7 +60,7 @@ const AllOrders = () => {
     const handleDeleteOne = (id) => {
         const confrimToDelete = window.confirm("Are you confirm to delete?");
         if (confrimToDelete) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`http://server.alinarbd.com/order/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
@@ -84,7 +84,7 @@ const AllOrders = () => {
     const handleConfirmOrder = (id) => {
         const confrimToAccept = window.confirm("Are you confirm to Accept this order?");
         if (confrimToAccept) {
-            fetch(`http://localhost:5000/order/${id}`, {
+            fetch(`http://server.alinarbd.com/order/${id}`, {
                 method: "PUT",
                 headers: {
                     authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
@@ -110,7 +110,7 @@ const AllOrders = () => {
         const targetedPro = allProducts.find(eachProduct => eachProduct.name === productName);
         const deliveredCount = targetedPro.delivered + 1;
         if (confrimToIncrease) {
-            fetch(`http://localhost:5000/productDeliverCounter/${productName}`, {
+            fetch(`http://server.alinarbd.com/productDeliverCounter/${productName}`, {
                 method: "PUT",
                 headers: {
                     'content-type': 'application/json',

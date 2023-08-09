@@ -49,7 +49,7 @@ const ConfirmOrder = () => {
     };
 
     if (orderData.clientName && orderData.clientEmail && orderData.clientPhone && orderData.clientDistrict && orderData.clientThana && orderData.clientVillage && orderData.productName && orderData.productImg && orderData.productStatus && orderData.productPrice && orderData.deliveryCharge && orderData.productQuantity && orderData.totalPrice) {
-      fetch("http://localhost:5000/order", {
+      fetch("http://server.alinarbd.com/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

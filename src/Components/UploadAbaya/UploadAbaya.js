@@ -129,7 +129,7 @@ const UploadAbaya = () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        fetch("http://localhost:5000/allProducts", {
+                        fetch("http://server.alinarbd.com/allProducts", {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',

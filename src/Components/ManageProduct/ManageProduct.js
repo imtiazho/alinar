@@ -23,7 +23,7 @@ const ManageProduct = () => {
     };
 
     useEffect(() => {
-        fetch("http://localhost:5000/allProducts", {
+        fetch("http://server.alinarbd.com/allProducts", {
             headers: {
                 authorization: `${user?.email} ${localStorage.getItem('accessToken')}`
             }
@@ -41,7 +41,7 @@ const ManageProduct = () => {
     //     error,
     //     data,
     // } = useQuery("allProduct", () =>
-    //     fetch("http://localhost:5000/allProducts").then((res) => res.json())
+    //     fetch("http://server.alinarbd.com/allProducts").then((res) => res.json())
     // );
     // if (isLoading) {
     //     return <Spinner />;
@@ -50,7 +50,7 @@ const ManageProduct = () => {
     const deleteProduct = (id) => {
         const confirmationToDelete = window.confirm("Are you sure to delete?");
         if (confirmationToDelete) {
-            fetch(`http://localhost:5000/allproduct/${id}`, {
+            fetch(`http://server.alinarbd.com/allproduct/${id}`, {
                 method: "DELETE",
                 headers: {
                     authorization: `${user?.email} ${localStorage.getItem('accessToken')}`

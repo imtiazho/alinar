@@ -7,7 +7,7 @@ import Spinner from "../../Spinner/Spinner";
 const ThreePisDetails = () => {
   const { threePisDetailsId } = useParams();
   const { isLoading, error, data } = useQuery("threePis", () =>
-    fetch(`http://localhost:5000/threePis/${threePisDetailsId}`).then((res) =>
+    fetch(`http://server.alinarbd.com/threePis/${threePisDetailsId}`).then((res) =>
       res.json()
     )
   );

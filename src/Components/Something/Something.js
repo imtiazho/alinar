@@ -12,11 +12,11 @@ const Something = () => {
     console.log(userData);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user?userEmail=${userData?.email}`).then(res => res.json()).then(data => setUserData(data))
+        fetch(`http://server.alinarbd.com/user?userEmail=${userData?.email}`).then(res => res.json()).then(data => setUserData(data))
     }, [userData?.email])
 
     useEffect(() => {
-        fetch('http://localhost:5000/something', {
+        fetch('http://server.alinarbd.com/something', {
             method: 'GET',
             headers: {
                 authorization: `${userData?.email} ${localStorage.getItem('accessToken')}`

@@ -9,7 +9,7 @@ const Sharee = () => {
     error,
     data: sharees,
   } = useQuery("shareeData", () =>
-    fetch("http://localhost:5000/sharees/sharee").then((res) => res.json())
+    fetch("http://server.alinarbd.com/sharees/sharee").then((res) => res.json())
   );
   if (isLoading) {
     return <Spinner />;

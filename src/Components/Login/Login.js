@@ -57,7 +57,7 @@ const Login = () => {
 
   if (googleUser) {
     const emailToToken = googleUser.email
-    fetch('http://localhost:5000/jwtTokenGenerator', {
+    fetch('http://server.alinarbd.com/jwtTokenGenerator', {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -77,7 +77,7 @@ const Login = () => {
     signInWithEmailAndPassword(userInfo.email, userInfo.password);
 
     const emailToToken = userInfo.email
-    fetch('http://localhost:5000/jwtTokenGenerator', {
+    fetch('http://server.alinarbd.com/jwtTokenGenerator', {
       method: "POST",
       headers: {
         "content-type": "application/json"

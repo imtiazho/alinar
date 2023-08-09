@@ -7,7 +7,7 @@ import Spinner from "../../Spinner/Spinner";
 const ShareeDetails = () => {
   const { shareeId } = useParams();
   const { isLoading, error, data } = useQuery("sharee", () =>
-    fetch(`http://localhost:5000/sharee/${shareeId}`).then((res) => res.json())
+    fetch(`http://server.alinarbd.com/sharee/${shareeId}`).then((res) => res.json())
   );
 
   if (isLoading) {

@@ -29,7 +29,7 @@ const NavBar = () => {
   const [admin, setAdmin] = useAdmin(user);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user?userEmail=${user?.email}`).then(res => res.json()).then(data => setUserData(data))
+    fetch(`http://server.alinarbd.com/user?userEmail=${user?.email}`).then(res => res.json()).then(data => setUserData(data))
   }, [user?.email])
 
   const menuItems = (
